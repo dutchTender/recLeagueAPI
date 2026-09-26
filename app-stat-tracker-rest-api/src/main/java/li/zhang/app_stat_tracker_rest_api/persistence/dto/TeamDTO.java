@@ -17,14 +17,6 @@ public class TeamDTO {
     Set<GameDTO> homeGames = new HashSet<>();
     Set<GameDTO> awayGames = new HashSet<>();
 
-    public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors, GameDTO homeGame) {
-        this.id = id;
-        this.teamName = teamName;
-        this.teamCoachName = teamCoachName;
-        this.teamSponsors = teamSponsors;
-        this.homeGames.add(homeGame);
-    }
-
     public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors, GameDTO homeGame, GameDTO awayGame) {
         this.id = id;
         this.teamName = teamName;
