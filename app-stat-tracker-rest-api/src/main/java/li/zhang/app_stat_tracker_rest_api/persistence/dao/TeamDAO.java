@@ -43,5 +43,6 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
     Page<TeamDTO> findAllBy(Pageable pageable);
 
     Optional<Team> findTeamBy(Example<Team> example);
+
     List<Team> findAllBy(Example<Team> example);
 }

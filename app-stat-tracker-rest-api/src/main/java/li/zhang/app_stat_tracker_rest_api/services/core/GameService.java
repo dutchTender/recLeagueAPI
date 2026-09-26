@@ -38,6 +38,10 @@ public class GameService implements BaseService<Game, GameDTO> {
         return this.gameDAO.findGameBy(example).orElse(null);
     }
 
+    public GameDTO findGameByGameTime(String gameTime) {
+        return this.gameDAO.findGameByGameTime(gameTime).orElse(null);
+    }
+
     @Override
     public List<GameDTO> findAll() {
         return this.gameDAO.findAllBy();

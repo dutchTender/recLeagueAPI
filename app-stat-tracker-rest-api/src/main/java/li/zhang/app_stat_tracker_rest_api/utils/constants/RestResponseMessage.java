@@ -25,5 +25,11 @@ public class RestResponseMessage{
     public static final String TEAM_DELETE_SUCCESS = "TEAM deleted successfully";
     public static final String TEAM_GET_SUCCESS = "TEAM retrieved successfully";
     public static final String TEAMS_GET_SUCCESS = "TEAM retrieved successfully";
+
+    public static final String GAME_CREATE_SUCCESS = "New GAME created successfully";
+    public static final String GAME_UPDATE_SUCCESS = "GAME update successfully";
+    public static final String GAME_DELETE_SUCCESS = "GAME deleted successfully";
+    public static final String GAME_GET_SUCCESS = "GAME retrieved successfully";
+    public static final String GAMES_GET_SUCCESS = "GAMES retrieved successfully";
 }
 

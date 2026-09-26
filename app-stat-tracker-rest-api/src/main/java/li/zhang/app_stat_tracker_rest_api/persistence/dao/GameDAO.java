@@ -33,5 +33,6 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
     Page<GameDTO> findAllBy(Pageable pageable);
 
     List<Game> findAllBy(Example<Game> example);
+
     Optional<Game> findGameBy(Example<Game> example);
 }

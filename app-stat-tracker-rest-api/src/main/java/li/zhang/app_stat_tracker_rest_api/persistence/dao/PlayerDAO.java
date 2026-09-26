@@ -51,5 +51,6 @@ public interface PlayerDAO extends JpaRepository<Player, Long> , QueryByExampleE
     Page<PlayerDTO> findAllBy(Pageable pageable);
 
     List<Player> findAllPlayerBy(Example<Player> example);
+
     Optional<Player> findPlayerBy(Example<Player> example);
 }
