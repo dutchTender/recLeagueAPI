@@ -31,8 +31,7 @@ class TeamServiceTest {
     void getById_ShouldReturnEntity_WhenEntityExists() {
         // Arrange
         Long entityId = 1L;
-        Team mockEntity = new Team("Alice");
-        mockEntity.setId(entityId);
+
         TeamDTO teamDTO = new TeamDTO();
         teamDTO.setTeamName("Alice");
 
@@ -40,7 +39,7 @@ class TeamServiceTest {
         TeamDTO result = service.find(entityId);
         assertNotNull(result);
         assertEquals("Alice", result.getTeamName());
-        verify(repository, times(2)).findTeamById(entityId);
+        verify(repository, times(1)).findTeamById(entityId);
     }
 }
 

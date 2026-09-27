@@ -125,7 +125,9 @@ start of team 2
         team2.setTeamCoachName("steve kerr");
         this.teamDAO.saveAndFlush(team3);
 
-
+/*
+crate first game
+ */
         Game game = new Game();
         game.setGameType("season");
         game.setGameLocation("Thomas Farm Community Center");

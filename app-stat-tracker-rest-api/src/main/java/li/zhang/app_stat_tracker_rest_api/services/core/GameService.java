@@ -4,7 +4,9 @@ import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
+import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,8 @@ public class GameService implements BaseService<Game, GameDTO> {
 
     @Override
     public GameDTO find(Long id) {
-        return this.gameDAO.findGameById(id).orElse(null);
+        List<GameDTO> rawDTOResult = this.gameDAO.findGameById(id);
+        return getGameDTO(rawDTOResult);
     }
 
     @Override
@@ -39,7 +42,24 @@ public class GameService implements BaseService<Game, GameDTO> {
     }
 
     public GameDTO findGameByGameTime(String gameTime) {
-        return this.gameDAO.findGameByGameTime(gameTime).orElse(null);
+        List<GameDTO> rawDTOResult = this.gameDAO.findGameByGameTime(gameTime);
+        return getGameDTO(rawDTOResult);
+    }
+
+    @NonNull
+    private GameDTO getGameDTO(List<GameDTO> rawDTOResult) {
+        GameDTO resultDTO = new GameDTO();
+        resultDTO.setId(rawDTOResult.get(0).getId());
+        resultDTO.setGameDate(rawDTOResult.get(0).getGameDate());
+        resultDTO.setGameTime(rawDTOResult.get(0).getGameTime());
+        resultDTO.setGameLocation(rawDTOResult.get(0).getGameLocation());
+        resultDTO.setHomeTeam(rawDTOResult.get(0).getHomeTeam());
+        resultDTO.setAwayTeam(rawDTOResult.get(0).getAwayTeam());
+        rawDTOResult.forEach(gameDTO -> {
+            resultDTO.addHomeTeamPlayer(gameDTO.getHomeTeam().getPlayers().stream().findFirst().orElse(null));
+            resultDTO.addAwayTeamPlayer(gameDTO.getAwayTeam().getPlayers().stream().findFirst().orElse(null));
+        });
+        return resultDTO;
     }
 
     @Override

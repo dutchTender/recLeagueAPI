@@ -7,12 +7,12 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
 
-import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GameEntityStepDefinitions {
 
     private static final Logger log = LoggerFactory.getLogger(GameEntityStepDefinitions.class);
@@ -32,8 +32,8 @@ public class GameEntityStepDefinitions {
 
     @Then("a game dated {string} should exist in the database")
     public void aCustomerNamedShouldExistInTheDatabase(String gameTime) {
-        Optional<GameDTO> game = repository.findGameByGameTime(gameTime);
-        assertTrue(game.isPresent(), "Game should be found in the database");
+        List<GameDTO> game = repository.findGameByGameTime(gameTime);
+        assertEquals(game.get(0).getGameTime(), gameTime, "Game should be found in the database");
         log.info("cucumber tests completed");
     }
 }

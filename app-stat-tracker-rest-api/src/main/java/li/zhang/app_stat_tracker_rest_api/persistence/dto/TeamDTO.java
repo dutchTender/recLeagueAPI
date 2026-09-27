@@ -36,6 +36,14 @@ public class TeamDTO {
         this.players.add(player);
     }
 
+    public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors, PlayerDTO player) {
+        this.id = id;
+        this.teamName = teamName;
+        this.teamCoachName = teamCoachName;
+        this.teamSponsors = teamSponsors;
+        this.players.add(player);
+    }
+
     public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors) {
         this.id = id;
         this.teamName = teamName;
@@ -46,9 +54,8 @@ public class TeamDTO {
     public void addPlayer(PlayerDTO playerDTO) {
         players.add(playerDTO);
     }
-    public PlayerDTO removePlayer(PlayerDTO playerDTO) {
+    public void removePlayer(PlayerDTO playerDTO) {
         players.remove(playerDTO);
-        return playerDTO;
     }
     public void addHomeGame(GameDTO gameDTO) {
         homeGames.add(gameDTO);

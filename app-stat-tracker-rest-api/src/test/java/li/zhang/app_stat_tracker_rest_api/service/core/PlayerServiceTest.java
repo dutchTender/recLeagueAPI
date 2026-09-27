@@ -6,7 +6,6 @@ import static org.mockito.Mockito.*;
 import java.util.Optional;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import li.zhang.app_stat_tracker_rest_api.services.core.PlayerService;
 
 import org.junit.jupiter.api.Test;
@@ -29,8 +28,6 @@ class PlayerServiceTest {
     void getById_ShouldReturnEntity_WhenEntityExists() {
         // Arrange
         Long entityId = 1L;
-        Player mockEntity = new Player("Alice");
-        mockEntity.setId(entityId);
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setUserName("Alice");
         when(repository.findPlayerById(entityId)).thenReturn(Optional.of(playerDTO));
@@ -38,6 +35,6 @@ class PlayerServiceTest {
         assertNotNull(result);
         assertEquals("Alice", result.getUserName());
 
-        verify(repository, times(2)).findPlayerById(entityId);
+        verify(repository, times(1)).findPlayerById(entityId);
     }
 }

@@ -6,7 +6,6 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
