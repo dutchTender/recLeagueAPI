@@ -64,5 +64,48 @@ public class SeedService {
 
 
 
+        Player player4 = new Player();
+        player4.setUserName("gentle-giant");
+        player4.setEmail("lzhxxxx1@gmailo.com");
+        player4.setFirstName("jason");
+        player4.setLastName("borne");
+        player4.setSex("male");
+        player4.setPhone("571-839-7777");
+
+        this.playerDAO.saveAndFlush(player4);
+
+        Player player5 = new Player();
+        player5.setUserName("skip to my lu");
+        player5.setEmail("2342525t@gmailo.com");
+        player5.setFirstName("mike");
+        player5.setLastName("ryan");
+        player5.setSex("male");
+        player5.setPhone("571-555-7777");
+
+        this.playerDAO.saveAndFlush(player5);
+
+        Player player6 = new Player();
+        player6.setUserName("while chocolate");
+        player6.setEmail("x4444444x@gmailo.com");
+        player6.setFirstName("jason");
+        player6.setLastName("williams");
+        player6.setSex("male");
+        player6.setPhone("222-555-7777");
+
+        this.playerDAO.saveAndFlush(player3);
+
+
+
+        Team team2 = new Team("Team-lightning");
+        team2.setTeamCoachName("steve kerr");
+        this.teamDAO.saveAndFlush(team2);
+
+        player4.setTeam(team2);
+        player5.setTeam(team2);
+        player6.setTeam(team2);
+        this.playerDAO.saveAndFlush(player4);
+        this.playerDAO.saveAndFlush(player5);
+        this.playerDAO.saveAndFlush(player6);
+
     }
 }

@@ -33,7 +33,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
     @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
@@ -56,7 +55,6 @@ public class SecurityConfig {
                 .httpBasic(withDefaults())
                 .build();
     }
-
 
     @Bean
     @Profile("DEV")
