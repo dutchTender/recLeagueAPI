@@ -43,7 +43,6 @@ public class Game implements BaseEntity {
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Team homeTeam;
 
-
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Team awayTeam;
 

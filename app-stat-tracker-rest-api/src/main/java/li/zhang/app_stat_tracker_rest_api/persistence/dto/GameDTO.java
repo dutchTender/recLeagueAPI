@@ -14,5 +14,14 @@ public class GameDTO {
     String gameDate;
     String gameTime;
     String gameLocation;
+    TeamDTO homeTeam;
+    TeamDTO awayTeam;
 
+    public GameDTO(Long id, String gameType, String gameDate, String gameTime, String gameLocation) {
+        this.id = id;
+        this.gameType = gameType;
+        this.gameDate = gameDate;
+        this.gameTime = gameTime;
+        this.gameLocation = gameLocation;
+    }
 }
