@@ -22,8 +22,6 @@ class PlayerServiceTest {
 
     @InjectMocks
     private PlayerService service;
-
-
     @Test
     void getById_ShouldReturnEntity_WhenEntityExists() {
         // Arrange
