@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseEntity;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -28,7 +28,6 @@ public class Player implements BaseEntity{
     }
 
     public Player() {
-
     }
     @Column(unique = true)
     private String userName;
@@ -43,7 +42,6 @@ public class Player implements BaseEntity{
     private String phone;
 
     private String sex;
-
 
     @Override
     public boolean equals(Object o) {

@@ -12,13 +12,15 @@ public class SeedService {
     private final PlayerDAO playerDAO;
     private final TeamDAO teamDAO;
     public SeedService(PlayerDAO playerDAO,  TeamDAO teamDAO) {
-
         this.playerDAO = playerDAO;
         this.teamDAO = teamDAO;
     }
 
-
     public void seedDB(){
+/*
+start of team 1
+ */
+
         Player player1 = new Player();
         player1.setUserName("dutchTender");
         player1.setEmail("lzhang421@gmailo.com");
@@ -50,7 +52,6 @@ public class SeedService {
         this.playerDAO.saveAndFlush(player3);
 
 
-
         Team team1 = new Team("Team-Thunder");
         team1.setTeamCoachName("Dutch Tender");
         this.teamDAO.saveAndFlush(team1);
@@ -61,9 +62,9 @@ public class SeedService {
         this.playerDAO.saveAndFlush(player1);
         this.playerDAO.saveAndFlush(player2);
         this.playerDAO.saveAndFlush(player3);
-
-
-
+/*
+start of team 2
+ */
         Player player4 = new Player();
         player4.setUserName("gentle-giant");
         player4.setEmail("lzhxxxx1@gmailo.com");
@@ -93,7 +94,6 @@ public class SeedService {
         player6.setPhone("222-555-7777");
 
         this.playerDAO.saveAndFlush(player3);
-
 
 
         Team team2 = new Team("Team-lightning");
