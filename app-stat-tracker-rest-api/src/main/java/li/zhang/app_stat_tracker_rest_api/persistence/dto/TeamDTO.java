@@ -36,25 +36,22 @@ public class TeamDTO {
         this.players.add(player);
     }
 
-    public PlayerDTO addPlayer(PlayerDTO playerDTO) {
+    public void addPlayer(PlayerDTO playerDTO) {
         players.add(playerDTO);
-        return playerDTO;
     }
     public PlayerDTO removePlayer(PlayerDTO playerDTO) {
         players.remove(playerDTO);
         return playerDTO;
     }
-    public GameDTO addHomeGame(GameDTO gameDTO) {
+    public void addHomeGame(GameDTO gameDTO) {
         homeGames.add(gameDTO);
-        return gameDTO;
     }
     public GameDTO removeHomeGame(GameDTO gameDTO) {
         homeGames.remove(gameDTO);
         return gameDTO;
     }
-    public GameDTO addAwayGame(GameDTO gameDTO) {
+    public void addAwayGame(GameDTO gameDTO) {
         awayGames.add(gameDTO);
-        return gameDTO;
     }
     public GameDTO removeAwayGame(GameDTO gameDTO) {
         awayGames.remove(gameDTO);

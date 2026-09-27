@@ -65,6 +65,13 @@ public class TeamController extends AbstractController<Team, TeamDTO> {
         return apiResponseSingleton.createAPIResponse(teamResult , metaData, RestResponseMessage.TEAM_GET_SUCCESS,RestParams.API_STATUS_OK);
     }
 
+    @GetMapping(value = "/name/{teamName}")
+    public ResponseEntity<AbstractRestResponse<TeamDTO>> findOneTeamByNaME(@PathVariable("teamName") final String teamName) {
+        TeamDTO teamResult = service.findByTeamName(teamName);
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.TEAM_ENTITY_PATH, "params: find one TEAM - count : 1 ");
+        return apiResponseSingleton.createAPIResponse(teamResult , metaData, RestResponseMessage.TEAM_GET_SUCCESS,RestParams.API_STATUS_OK);
+    }
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AbstractRestResponse<TeamDTO>> createTeam(@RequestBody @Valid final TeamDTO dto) {

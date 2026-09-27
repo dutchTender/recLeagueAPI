@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
+import java.util.List;
 import java.util.Optional;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
@@ -34,7 +35,8 @@ class TeamServiceTest {
         mockEntity.setId(entityId);
         TeamDTO teamDTO = new TeamDTO();
         teamDTO.setTeamName("Alice");
-        when(repository.findTeamById(entityId)).thenReturn(Optional.of(teamDTO));
+
+        when(repository.findTeamById(entityId)).thenReturn(List.of(teamDTO));
         TeamDTO result = service.find(entityId);
         assertNotNull(result);
         assertEquals("Alice", result.getTeamName());

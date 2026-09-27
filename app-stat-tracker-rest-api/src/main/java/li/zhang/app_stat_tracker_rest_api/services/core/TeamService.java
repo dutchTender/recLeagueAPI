@@ -4,9 +4,9 @@ import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
+import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +29,16 @@ public class TeamService implements BaseService<Team, TeamDTO> {
     @Override
     public TeamDTO find(Long id) {
         List<TeamDTO> rawDTOResult = teamRepository.findTeamById(id);
+        return getTeamDTO(rawDTOResult);
+    }
+
+    public TeamDTO findByTeamName(String teamName) {
+        List<TeamDTO> rawDTOResult = teamRepository.findTeamByTeamName(teamName);
+        return getTeamDTO(rawDTOResult);
+    }
+
+    @NonNull
+    private TeamDTO getTeamDTO(List<TeamDTO> rawDTOResult) {
         TeamDTO resultDTO = new TeamDTO();
         resultDTO.setTeamName(rawDTOResult.get(0).getTeamName());
         resultDTO.setId(rawDTOResult.get(0).getId());
@@ -37,8 +47,6 @@ public class TeamService implements BaseService<Team, TeamDTO> {
             resultDTO.addAwayGame(team.getAwayGames().stream().findFirst().orElse(null));
             resultDTO.addPlayer(team.getPlayers().stream().findFirst().orElse(null));
         });
-
-
         return resultDTO;
     }
 

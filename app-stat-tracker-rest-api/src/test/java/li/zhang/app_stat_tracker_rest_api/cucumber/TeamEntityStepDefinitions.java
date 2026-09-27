@@ -9,8 +9,10 @@ import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeamEntityStepDefinitions {
@@ -31,8 +33,8 @@ public class TeamEntityStepDefinitions {
 
     @Then("a team named {string} should exist in the database")
     public void aCustomerNamedShouldExistInTheDatabase(String name) {
-        Optional<TeamDTO> team = repository.findTeamByTeamName(name);
-        assertTrue(team.isPresent(), "Customer should be found in the database");
+        List<TeamDTO> team = repository.findTeamByTeamName(name);
+        assertEquals(team.get(0).getTeamName(), name, "Customer should be found in the database");
         log.info("cucumber tests completed");
     }
 }

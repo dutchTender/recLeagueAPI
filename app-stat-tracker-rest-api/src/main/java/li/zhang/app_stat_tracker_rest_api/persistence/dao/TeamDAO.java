@@ -35,26 +35,22 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
             "left JOIN t.awayGames ag " +
             "left JOIN t.players p "+
             "WHERE t.teamName = :teamName")
-    Optional<TeamDTO> findTeamByTeamName(@Param("teamName") String teamName);
+    List<TeamDTO> findTeamByTeamName(@Param("teamName") String teamName);
 
     @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex)   )" +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameTime, ag.gameLocation))" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
-            "left JOIN t.awayGames ag " +
-            "left JOIN t.players p " )
+            "left JOIN t.awayGames ag ")
     List<TeamDTO> findAllBy();
 
     @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex)   )" +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameTime, ag.gameLocation))" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
-            "left JOIN t.awayGames ag " +
-            "left JOIN t.players p " )
+            "left JOIN t.awayGames ag ")
     Page<TeamDTO> findAllBy(Pageable pageable);
 
     Optional<Team> findTeamBy(Example<Team> example);
