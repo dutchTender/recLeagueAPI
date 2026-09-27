@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecutor<Game> {
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType, g.gameTime, g.gameLocation)" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation)" +
             "FROM Game g " +
             "WHERE g.id = :id")
     Optional<GameDTO> findGameById(@Param("id")Long id);
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType, g.gameTime, g.gameLocation)" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType,g.gameDate, g.gameTime, g.gameLocation)" +
             "FROM Game g " +
             "WHERE g.gameTime = :gameTime")
     Optional<GameDTO> findGameByGameTime(@Param("gameTime")String gameTime);
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType, g.gameTime, g.gameLocation)" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType,g.gameDate, g.gameTime, g.gameLocation)" +
             "FROM Game g " )
     List<GameDTO> findAllBy();
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType, g.gameTime, g.gameLocation)" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(g.id, g.gameType,g.gameDate, g.gameTime, g.gameLocation)" +
             "FROM Game g " )
     Page<GameDTO> findAllBy(Pageable pageable);
 

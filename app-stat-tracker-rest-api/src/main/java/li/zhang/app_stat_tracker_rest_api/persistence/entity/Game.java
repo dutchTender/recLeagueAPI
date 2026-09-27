@@ -20,7 +20,6 @@ public class Game implements BaseEntity {
     private Long id;
 
     public Game() {
-
     }
 
     @Override
@@ -33,6 +32,7 @@ public class Game implements BaseEntity {
         this.id = id;
     }
     public String gameType;
+    public String gameDate;
     public String gameTime;
     public String gameLocation;
 

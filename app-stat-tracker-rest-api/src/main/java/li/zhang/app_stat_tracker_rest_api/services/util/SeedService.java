@@ -1,7 +1,9 @@
 package li.zhang.app_stat_tracker_rest_api.services.util;
 
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ public class SeedService {
 
     private final PlayerDAO playerDAO;
     private final TeamDAO teamDAO;
-    public SeedService(PlayerDAO playerDAO,  TeamDAO teamDAO) {
+    private final GameDAO gameDAO;
+    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO) {
         this.playerDAO = playerDAO;
         this.teamDAO = teamDAO;
+        this.gameDAO = gameDAO;
     }
 
     public void seedDB(){
@@ -120,6 +124,17 @@ start of team 2
         Team team3 = new Team("Team-test");
         team2.setTeamCoachName("steve kerr");
         this.teamDAO.saveAndFlush(team3);
+
+
+        Game game = new Game();
+        game.setGameType("season");
+        game.setGameLocation("Thomas Farm Community Center");
+        game.setHomeTeam(team1);
+        game.setAwayTeam(team2);
+        game.setGameTime("12:00PM");
+        game.setGameDate("2/22/2227");
+        this.gameDAO.saveAndFlush(game);
+
 
     }
 }

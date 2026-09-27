@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 public class GameDTO {
     Long id;
     String gameType;
+    String gameDate;
     String gameTime;
     String gameLocation;
+
 }
