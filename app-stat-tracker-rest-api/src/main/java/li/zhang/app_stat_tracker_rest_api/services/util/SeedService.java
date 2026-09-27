@@ -62,6 +62,10 @@ start of team 1
         this.playerDAO.saveAndFlush(player1);
         this.playerDAO.saveAndFlush(player2);
         this.playerDAO.saveAndFlush(player3);
+        team1.addPlayer(player1);
+        team1.addPlayer(player2);
+        team1.addPlayer(player3);
+        this.teamDAO.saveAndFlush(team1);
 /*
 start of team 2
  */
@@ -106,6 +110,16 @@ start of team 2
         this.playerDAO.saveAndFlush(player4);
         this.playerDAO.saveAndFlush(player5);
         this.playerDAO.saveAndFlush(player6);
+
+        team2.addPlayer(player4);
+        team2.addPlayer(player5);
+        team2.addPlayer(player6);
+        this.teamDAO.saveAndFlush(team2);
+
+
+        Team team3 = new Team("Team-test");
+        team2.setTeamCoachName("steve kerr");
+        this.teamDAO.saveAndFlush(team3);
 
     }
 }

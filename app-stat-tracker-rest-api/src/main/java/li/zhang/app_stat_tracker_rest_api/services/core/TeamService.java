@@ -28,7 +28,19 @@ public class TeamService implements BaseService<Team, TeamDTO> {
 
     @Override
     public TeamDTO find(Long id) {
-        return teamRepository.findTeamById(id).orElse(null);
+        List<TeamDTO> rawDTOResult = teamRepository.findTeamById(id);
+        TeamDTO resultDTO = new TeamDTO();
+        // iterate over results and build TeamDTO
+        rawDTOResult.forEach(team -> {
+            resultDTO.setTeamName(team.getTeamName());
+            resultDTO.setId(team.getId());
+            resultDTO.addHomeGame(team.getHomeGames().stream().findFirst().orElse(null));
+            resultDTO.addAwayGame(team.getAwayGames().stream().findFirst().orElse(null));
+            resultDTO.addPlayer(team.getPlayers().stream().findFirst().orElse(null));
+        });
+
+
+        return resultDTO;
     }
 
     @Override

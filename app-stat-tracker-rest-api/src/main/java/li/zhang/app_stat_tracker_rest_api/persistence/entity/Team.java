@@ -53,7 +53,7 @@ public class Team implements BaseEntity {
     private Set<Game> awayGames = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "team")
     private Set<Player> players = new HashSet<>();
 
 
