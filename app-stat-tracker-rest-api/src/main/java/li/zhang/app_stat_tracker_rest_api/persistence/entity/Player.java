@@ -59,8 +59,15 @@ public class Player implements BaseEntity{
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player" , cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PlayerStats> playerStats;
+
+    public void addPlayerStats(PlayerStats playerStats) {
+        this.playerStats.add(playerStats);
+    }
+    public void removePlayerStats(PlayerStats playerStats) {
+        this.playerStats.remove(playerStats);
+    }
 
 
 }

@@ -15,23 +15,16 @@ public class PlayerStats implements  BaseEntity {
     @Id
     private Long id;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Player player;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Game game;
 
-    public String gameStats;
+    public int points;
+    public int rebounds;
+    public int assists;
+    public int turnOvers;
 
     @Override
     public boolean equals(Object o) {

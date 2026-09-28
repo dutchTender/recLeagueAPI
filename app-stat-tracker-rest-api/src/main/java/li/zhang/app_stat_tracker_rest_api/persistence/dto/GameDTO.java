@@ -37,4 +37,5 @@ public class GameDTO {
     public void removeAwayTeamPlayer(PlayerDTO player) {
         this.awayTeam.removePlayer(player);
     }
+
 }
