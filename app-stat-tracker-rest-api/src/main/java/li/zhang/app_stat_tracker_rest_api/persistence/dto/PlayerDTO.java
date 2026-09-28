@@ -19,8 +19,8 @@ public class PlayerDTO {
     String phone;
     String sex;
     TeamDTO team;
-    PlayerStats gameStats = new PlayerStats();
-    Set<PlayerStats> seasonStats = new HashSet<>();
+    PlayerStatsDTO gameStats = new PlayerStatsDTO();
+    Set<PlayerStatsDTO> seasonStats = new HashSet<>();
 
     public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex) {
         this.id = id;
@@ -43,7 +43,7 @@ public class PlayerDTO {
         this.team = team;
     }
 
-    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, PlayerStats gameStats) {
+    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, PlayerStatsDTO gameStats) {
         this.id = id;
         this.userName = userName;
         this.firstName = firstName;
@@ -55,10 +55,21 @@ public class PlayerDTO {
         this.gameStats = gameStats;
     }
 
-    public void addPlayerSeasonStats(PlayerStats playerStats) {
+    public PlayerDTO(Long id, String userName, String lastName, String firstName, String email, String phone, String sex, PlayerStatsDTO gameStats) {
+        this.id = id;
+        this.userName = userName;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.phone = phone;
+        this.sex = sex;
+        this.gameStats = gameStats;
+    }
+
+    public void addPlayerSeasonStats(PlayerStatsDTO playerStats) {
         this.seasonStats.add(playerStats);
     }
-    public void removePlayerStats(PlayerStats playerStats) {
+    public void removePlayerStats(PlayerStatsDTO playerStats) {
         this.seasonStats.remove(playerStats);
     }
 }

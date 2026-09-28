@@ -25,10 +25,10 @@ public class PlayerStats implements  BaseEntity {
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Game game;
 
-    public int points;
-    public int rebounds;
-    public int assists;
-    public int turnOvers;
+    public Integer points;
+    public Integer rebounds;
+    public Integer assists;
+    public Integer turnOvers;
 
     @Override
     public boolean equals(Object o) {

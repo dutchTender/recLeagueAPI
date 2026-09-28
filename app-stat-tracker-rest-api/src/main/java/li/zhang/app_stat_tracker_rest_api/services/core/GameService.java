@@ -58,6 +58,7 @@ public class GameService implements BaseService<Game, GameDTO> {
         rawDTOResult.forEach(gameDTO -> {
             resultDTO.addHomeTeamPlayer(gameDTO.getHomeTeam().getPlayers().stream().findFirst().orElse(null));
             resultDTO.addAwayTeamPlayer(gameDTO.getAwayTeam().getPlayers().stream().findFirst().orElse(null));
+
         });
         return resultDTO;
     }
