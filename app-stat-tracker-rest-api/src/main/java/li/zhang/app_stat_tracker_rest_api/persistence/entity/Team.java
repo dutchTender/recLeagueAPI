@@ -52,30 +52,23 @@ public class Team implements BaseEntity {
     @OneToMany(mappedBy = "awayTeam")
     private Set<Game> awayGames = new HashSet<>();
 
-
     @OneToMany(mappedBy = "team")
     private Set<Player> players = new HashSet<>();
-
 
     public void addPlayer(Player player){
         this.players.add(player);
         player.setTeam(this);
     }
-
-
     public void removePlayer(Player player){
         this.players.remove(player);
         player.setTeam(null);
     }
-
-
     public void addHomeGame(Game game){
         this.homeGames.add(game);
     }
     public void removeHomeGame(Game game){
         this.homeGames.remove(game);
     }
-
     public void addAwayGame(Game game){
         this.awayGames.add(game);
     }
