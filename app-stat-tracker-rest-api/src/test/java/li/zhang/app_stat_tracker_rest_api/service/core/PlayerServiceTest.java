@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
+import java.util.List;
 import java.util.Optional;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
@@ -28,7 +29,7 @@ class PlayerServiceTest {
         Long entityId = 1L;
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setUserName("Alice");
-        when(repository.findPlayerById(entityId)).thenReturn(Optional.of(playerDTO));
+        when(repository.findPlayerById(entityId)).thenReturn(List.of(playerDTO));
         PlayerDTO result = service.find(entityId);
         assertNotNull(result);
         assertEquals("Alice", result.getUserName());

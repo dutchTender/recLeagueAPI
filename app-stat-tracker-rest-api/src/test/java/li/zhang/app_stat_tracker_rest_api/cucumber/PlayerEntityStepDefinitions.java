@@ -9,7 +9,11 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -29,17 +33,15 @@ public class PlayerEntityStepDefinitions {
 
     @When("a user saves a new player named {string}")
     public void aUserSavesANewCustomerNamed(String name) {
-
         playerRepository.saveAndFlush(new Player(name));
     }
 
     @Then("a player named {string} should exist in the database")
     public void aCustomerNamedShouldExistInTheDatabase(String name) {
-        Optional<PlayerDTO> customer = playerRepository.findPlayerByUserName(name);
-        assertTrue(customer.isPresent(), "Customer should be found in the database");
+        List<PlayerDTO> player = playerRepository.findPlayerByUserName(name);
+        assertEquals(player.get(0).getUserName(), name, "Customer should be found in the database");
         log.info("cucumber tests completed");
     }
-
 
     @Given("the registration database is empty")
     public void clearDatabase() {
