@@ -2,9 +2,11 @@ package li.zhang.app_stat_tracker_rest_api.services.util;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerStatsDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.PlayerStats;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +16,12 @@ public class SeedService {
     private final PlayerDAO playerDAO;
     private final TeamDAO teamDAO;
     private final GameDAO gameDAO;
-    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO) {
+    private final PlayerStatsDAO playerStatsDAO;
+    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO, PlayerStatsDAO playerStatsDAO) {
         this.playerDAO = playerDAO;
         this.teamDAO = teamDAO;
         this.gameDAO = gameDAO;
+        this.playerStatsDAO = playerStatsDAO;
     }
 
     public void seedDB(){
@@ -121,10 +125,6 @@ start of team 2
         this.teamDAO.saveAndFlush(team2);
 
 
-        Team team3 = new Team("Team-test");
-        team2.setTeamCoachName("steve kerr");
-        this.teamDAO.saveAndFlush(team3);
-
 /*
 crate first game
  */
@@ -136,6 +136,36 @@ crate first game
         game.setGameTime("12:00PM");
         game.setGameDate("2/22/2227");
         this.gameDAO.saveAndFlush(game);
+
+
+        /*
+        * create player stats for players
+        * */
+        PlayerStats playerStats1 = new PlayerStats();
+        playerStats1.setPoints(11);
+        playerStats1.setRebounds(8);
+        playerStats1.setAssists(4);
+        playerStats1.setGame(game);
+        playerStats1.setPlayer(player1);
+
+        this.playerStatsDAO.saveAndFlush(playerStats1);
+
+        PlayerStats playerStats2 = new PlayerStats();
+        playerStats2.setPoints(15);
+        playerStats2.setRebounds(3);
+        playerStats2.setGame(game);
+        playerStats2.setAssists(3);
+        playerStats2.setPlayer(player2);
+
+        this.playerStatsDAO.saveAndFlush(playerStats2);
+
+        PlayerStats playerStats3 = new PlayerStats();
+        playerStats3.setPoints(25);
+        playerStats3.setRebounds(3);
+        playerStats3.setGame(game);
+        playerStats3.setAssists(3);
+        playerStats3.setPlayer(player3);
+        this.playerStatsDAO.saveAndFlush(playerStats3);
 
 
     }

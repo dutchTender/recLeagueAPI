@@ -17,6 +17,8 @@ import java.util.Objects;
 @Setter
 public class PlayerStats implements  BaseEntity {
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)

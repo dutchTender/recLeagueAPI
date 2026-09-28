@@ -37,7 +37,6 @@ public class PlayerStatsService implements BaseService<PlayerStats, PlayerStatsD
         return this.playerStatsDAO.findPlayerStatsBy(example).orElse(null);
     }
 
-
     @Override
     public List<PlayerStatsDTO> findAll() {
         return this.playerStatsDAO.findAllBy();
