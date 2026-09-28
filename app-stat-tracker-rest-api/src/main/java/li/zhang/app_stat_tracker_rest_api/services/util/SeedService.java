@@ -169,9 +169,6 @@ crate first game
         playerStats3.setPlayer(player3);
         playerStats3.setTurnOvers(0);
         this.playerStatsDAO.saveAndFlush(playerStats3);
-
-
-
 /*
 start team 2
  */

@@ -1,5 +1,6 @@
 package li.zhang.app_stat_tracker_rest_api.persistence.dto;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonPropertyOrder({ "id", "teamName", "teamCoachName", "teamSponsors", "homeGames", "awayGames", "players" })
 public class TeamDTO {
     Long id;
     String teamName;

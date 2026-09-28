@@ -1,5 +1,6 @@
 package li.zhang.app_stat_tracker_rest_api.persistence.dto;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
 @Data
@@ -7,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonPropertyOrder({ "id", "points", "assists", "rebounds", "turnOvers" })
 public class PlayerStatsDTO{
     Long id;
     Integer points;

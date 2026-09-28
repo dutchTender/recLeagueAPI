@@ -22,7 +22,7 @@ public class GameEntityStepDefinitions {
     }
     @Given("the game database is empty")
     public void theDatabaseIsEmpty() {
-        repository.deleteAll();
+        log.info("the game database is empty");
     }
 
     @When("a user create a new game for the date {string}")

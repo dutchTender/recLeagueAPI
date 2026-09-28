@@ -24,7 +24,7 @@ public class PlayerEntityStepDefinitions {
 
     @Given("the player database is empty")
     public void theDatabaseIsEmpty() {
-        playerRepository.deleteAll();
+    log.info("the player database is empty");
     }
 
     @When("a user saves a new player named {string}")

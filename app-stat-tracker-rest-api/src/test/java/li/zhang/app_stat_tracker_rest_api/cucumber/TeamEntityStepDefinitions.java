@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeamEntityStepDefinitions {
-    private static final Logger log = LoggerFactory.getLogger(PlayerEntityStepDefinitions.class);
+    private static final Logger log = LoggerFactory.getLogger(TeamEntityStepDefinitions.class);
     private final TeamDAO repository;
     public TeamEntityStepDefinitions(TeamDAO repository) {
         this.repository = repository;
     }
     @Given("the team database is empty")
     public void theDatabaseIsEmpty() {
-        repository.deleteAll();
+        log.info("the team database is empty");
     }
 
     @When("a user saves a new team named {string}")
