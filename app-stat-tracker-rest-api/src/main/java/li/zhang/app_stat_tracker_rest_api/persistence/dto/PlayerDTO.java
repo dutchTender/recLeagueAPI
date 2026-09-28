@@ -32,7 +32,6 @@ public class PlayerDTO {
         this.phone = phone;
         this.sex = sex;
     }
-
     public PlayerDTO(Long id, String userName, String firstName, String lastName, String phone, String email, String sex, TeamDTO team) {
         this.id = id;
         this.userName = userName;
@@ -43,7 +42,6 @@ public class PlayerDTO {
         this.sex = sex;
         this.team = team;
     }
-
     public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, PlayerStatsDTO gameStats) {
         this.id = id;
         this.userName = userName;
@@ -55,7 +53,17 @@ public class PlayerDTO {
         this.team = team;
         this.gameStats = gameStats;
     }
-
+    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.sex = sex;
+        this.team = team;
+        this.seasonStats = seasonStats;
+    }
     public PlayerDTO(Long id, String userName, String lastName, String firstName, String email, String phone, String sex, PlayerStatsDTO gameStats) {
         this.id = id;
         this.userName = userName;

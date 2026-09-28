@@ -38,7 +38,6 @@ public class TeamDTO {
         this.awayGames.add(awayGame);
         this.players.add(player);
     }
-
     public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors, PlayerDTO player) {
         this.id = id;
         this.teamName = teamName;
@@ -46,7 +45,6 @@ public class TeamDTO {
         this.teamSponsors = teamSponsors;
         this.players.add(player);
     }
-
     public TeamDTO(Long id, String teamName, String teamCoachName, String teamSponsors) {
         this.id = id;
         this.teamName = teamName;

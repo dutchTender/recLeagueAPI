@@ -17,13 +17,15 @@ public interface PlayerDAO extends JpaRepository<Player, Long> , QueryByExampleE
     @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
             "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate, hg.gameTime, hg.gameLocation)," +
-            "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))" + ") " +
+            "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))," +
+            "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)" + ") " +
             "FROM Player p " +
             "left JOIN p.team t " + // Explicit JOIN to fetch team data efficiently
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
+            "left join p.playerStats ps "+
             "WHERE p.id = :id")
-    Optional<PlayerDTO> findPlayerById(@Param("id") Long id);
+    List<PlayerDTO> findPlayerById(@Param("id") Long id);
 
     @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
             "  new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +

@@ -2,6 +2,7 @@ package li.zhang.app_stat_tracker_rest_api.services.core;
 
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import org.springframework.data.domain.*;
@@ -27,7 +28,18 @@ public class PlayerService implements BaseService<Player, PlayerDTO> {
 
     @Override
     public PlayerDTO find(Long id) {
-        return this.playerDAO.findPlayerById(id).orElse(null);
+        PlayerDTO resultDTO = new PlayerDTO();
+        List<PlayerDTO> rawDTOResult = this.playerDAO.findPlayerById(id);
+        resultDTO.setId(rawDTOResult.get(0).getId());
+        resultDTO.setFirstName(rawDTOResult.get(0).getFirstName());
+        resultDTO.setLastName(rawDTOResult.get(0).getLastName());
+        resultDTO.setEmail(rawDTOResult.get(0).getEmail());
+        resultDTO.setPhone(rawDTOResult.get(0).getPhone());
+        resultDTO.setSex(rawDTOResult.get(0).getSex());
+        resultDTO.setTeam(rawDTOResult.get(0).getTeam());
+        rawDTOResult.forEach(playerDTO -> resultDTO.addPlayerSeasonStats(playerDTO.getGameStats()));
+        return resultDTO;
+
     }
 
     @Override

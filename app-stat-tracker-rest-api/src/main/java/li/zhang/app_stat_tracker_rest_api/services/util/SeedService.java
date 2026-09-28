@@ -148,8 +148,14 @@ crate first game
         playerStats1.setTurnOvers(3);
         playerStats1.setGame(game);
         playerStats1.setPlayer(player1);
-
         this.playerStatsDAO.saveAndFlush(playerStats1);
+
+
+        PlayerStats playerStats11 = new PlayerStats();
+
+        playerStats11.setPlayer(player1);
+
+        this.playerStatsDAO.saveAndFlush(playerStats11);
 
         PlayerStats playerStats2 = new PlayerStats();
         playerStats2.setPoints(15);
