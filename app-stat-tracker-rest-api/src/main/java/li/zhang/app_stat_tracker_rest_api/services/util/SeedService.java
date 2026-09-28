@@ -145,6 +145,7 @@ crate first game
         playerStats1.setPoints(11);
         playerStats1.setRebounds(8);
         playerStats1.setAssists(4);
+        playerStats1.setTurnOvers(3);
         playerStats1.setGame(game);
         playerStats1.setPlayer(player1);
 
@@ -155,6 +156,7 @@ crate first game
         playerStats2.setRebounds(3);
         playerStats2.setGame(game);
         playerStats2.setAssists(3);
+        playerStats2.setTurnOvers(3);
         playerStats2.setPlayer(player2);
 
         this.playerStatsDAO.saveAndFlush(playerStats2);
@@ -165,8 +167,42 @@ crate first game
         playerStats3.setGame(game);
         playerStats3.setAssists(3);
         playerStats3.setPlayer(player3);
+        playerStats3.setTurnOvers(0);
         this.playerStatsDAO.saveAndFlush(playerStats3);
 
 
+
+/*
+start team 2
+ */
+
+        PlayerStats playerStats4 = new PlayerStats();
+        playerStats4.setPoints(13);
+        playerStats4.setRebounds(7);
+        playerStats4.setAssists(4);
+        playerStats4.setTurnOvers(7);
+        playerStats4.setGame(game);
+        playerStats4.setPlayer(player4);
+
+        this.playerStatsDAO.saveAndFlush(playerStats4);
+
+        PlayerStats playerStats5 = new PlayerStats();
+        playerStats5.setPoints(25);
+        playerStats5.setRebounds(3);
+        playerStats5.setGame(game);
+        playerStats5.setAssists(1);
+        playerStats5.setTurnOvers(3);
+        playerStats5.setPlayer(player5);
+
+        this.playerStatsDAO.saveAndFlush(playerStats5);
+
+        PlayerStats playerStats6 = new PlayerStats();
+        playerStats6.setPoints(9);
+        playerStats6.setRebounds(12);
+        playerStats6.setGame(game);
+        playerStats6.setAssists(5);
+        playerStats6.setTurnOvers(4);
+        playerStats6.setPlayer(player6);
+        this.playerStatsDAO.saveAndFlush(playerStats6);
     }
 }
