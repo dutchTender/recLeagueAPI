@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

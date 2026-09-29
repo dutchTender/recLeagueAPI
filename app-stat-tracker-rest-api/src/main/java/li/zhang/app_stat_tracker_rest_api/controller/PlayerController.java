@@ -8,7 +8,7 @@ import li.zhang.app_stat_tracker_rest_api.model.abs.AbstractRestMetaData;
 import li.zhang.app_stat_tracker_rest_api.model.abs.AbstractRestResponse;
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.model.constants.QueryConstants;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Player;
 import li.zhang.app_stat_tracker_rest_api.persistence.mapper.PlayerMapper;
 import li.zhang.app_stat_tracker_rest_api.services.core.PlayerService;

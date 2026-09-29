@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import java.util.List;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.services.core.PlayerService;
 
 import org.junit.jupiter.api.Test;

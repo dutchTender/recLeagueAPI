@@ -2,7 +2,7 @@ package li.zhang.app_stat_tracker_rest_api.services.core;
 
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerStatsDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerStatsDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerStatsDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.PlayerStats;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;

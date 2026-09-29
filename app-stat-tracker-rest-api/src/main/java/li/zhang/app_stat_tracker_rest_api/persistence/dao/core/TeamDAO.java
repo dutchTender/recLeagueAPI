@@ -1,6 +1,6 @@
 package li.zhang.app_stat_tracker_rest_api.persistence.dao.core;
 
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.core.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -15,11 +15,11 @@ import java.util.Optional;
 
 public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecutor<Team> {
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
@@ -28,11 +28,11 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
             "WHERE t.id = :id")
     List<TeamDTO> findTeamById(@Param("id") Long id);
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
@@ -41,17 +41,17 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
             "WHERE t.teamName = :teamName")
     List<TeamDTO> findTeamByTeamName(@Param("teamName") String teamName);
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag ")
     List<TeamDTO> findAllBy();
 
-    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))" +
+    @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag ")
