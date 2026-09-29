@@ -31,11 +31,13 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
     @Query("SELECT new li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
             "new li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex)   )" +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
+            "new li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
-            "left JOIN t.players p "+
+            "left JOIN t.players p " +
+            "left join p.playerStats ps "+
             "WHERE t.teamName = :teamName")
     List<TeamDTO> findTeamByTeamName(@Param("teamName") String teamName);
 

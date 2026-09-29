@@ -57,6 +57,7 @@ public class TeamService implements BaseService<Team, TeamDTO> {
                     .ifPresentOrElse(
                             matchedObj -> {
                                 // Action A: Runs if the object exists
+                                logger.info(matchedObj.toString());
                                 matchedObj.addPlayerSeasonStats(playerDTO.getGameStats());
                             },
                             () -> {
