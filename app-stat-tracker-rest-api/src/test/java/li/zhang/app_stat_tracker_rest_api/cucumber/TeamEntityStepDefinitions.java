@@ -3,7 +3,7 @@ package li.zhang.app_stat_tracker_rest_api.cucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.TeamDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;
 import org.slf4j.Logger;

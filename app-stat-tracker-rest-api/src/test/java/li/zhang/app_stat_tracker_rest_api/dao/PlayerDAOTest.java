@@ -1,7 +1,7 @@
 package li.zhang.app_stat_tracker_rest_api.dao;
 
 
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

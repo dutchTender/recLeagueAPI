@@ -1,4 +1,4 @@
-package li.zhang.app_stat_tracker_rest_api.persistence.dao;
+package li.zhang.app_stat_tracker_rest_api.persistence.dao.core;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;

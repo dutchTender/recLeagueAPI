@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
-import java.util.Optional;
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
+
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.services.core.PlayerService;
 

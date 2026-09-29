@@ -1,9 +1,9 @@
 package li.zhang.app_stat_tracker_rest_api.services.util;
 
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerStatsDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.GameDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.PlayerStatsDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dao.core.TeamDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Game;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Player;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.PlayerStats;
