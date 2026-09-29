@@ -31,16 +31,11 @@ public class Player implements BaseEntity{
     }
     @Column(unique = true)
     private String userName;
-
     private String firstName;
-
     private String lastName;
-
     @Column(unique = true)
     private String email;
-
     private String phone;
-
     private String sex;
 
     @Override

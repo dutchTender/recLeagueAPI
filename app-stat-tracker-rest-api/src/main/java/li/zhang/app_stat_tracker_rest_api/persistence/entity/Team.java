@@ -25,25 +25,12 @@ public class Team implements BaseEntity {
 
     public Team() {
     }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Team(String teamName) {
         this.teamName = teamName;
     }
 
     public String teamName;
-
     public String teamCoachName;
-
     public String teamSponsors;
 
     @OneToMany(mappedBy = "homeTeam")

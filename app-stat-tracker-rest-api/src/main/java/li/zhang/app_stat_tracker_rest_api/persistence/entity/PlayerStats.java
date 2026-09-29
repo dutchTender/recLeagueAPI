@@ -1,6 +1,5 @@
 package li.zhang.app_stat_tracker_rest_api.persistence.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
