@@ -49,19 +49,19 @@ public class TeamService implements BaseService<Team, TeamDTO> {
             resultDTO.addAwayGame(team.getAwayGames().stream().findFirst().orElse(null));
             PlayerDTO playerDTO = team.getPlayers().stream().findFirst().orElse(null);
             assert playerDTO != null;
-            // check if player already exist in result set.
-            // if yes. that means there are additional matched game stats rows
             resultDTO.getPlayers().stream()
                     .filter(obj -> playerDTO.getId().equals(obj.getId()))
                     .findFirst()
                     .ifPresentOrElse(
                             matchedObj -> {
                                 // Action A: Runs if the object exists
+                                // aggregate player data to player object
                                 logger.info(matchedObj.toString());
                                 matchedObj.addPlayerSeasonStats(playerDTO.getGameStats());
                             },
                             () -> {
                                 // Action B: Runs if no matching object was found
+                                // add player as new
                                 playerDTO.addPlayerSeasonStats(playerDTO.getGameStats());
                                 playerDTO.setGameStats(null);
                                 resultDTO.addPlayer(playerDTO);
