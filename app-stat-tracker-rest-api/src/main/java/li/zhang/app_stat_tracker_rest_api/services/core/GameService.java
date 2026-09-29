@@ -4,8 +4,7 @@ import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
-import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Game;
 import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;

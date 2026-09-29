@@ -4,10 +4,10 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dao.GameDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerStatsDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.PlayerStats;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Game;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Player;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.PlayerStats;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;
 import org.springframework.stereotype.Service;
 
 @Service

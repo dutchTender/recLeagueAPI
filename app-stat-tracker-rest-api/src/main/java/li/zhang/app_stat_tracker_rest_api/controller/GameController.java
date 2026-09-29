@@ -9,7 +9,7 @@ import li.zhang.app_stat_tracker_rest_api.model.abs.AbstractRestResponse;
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.model.constants.QueryConstants;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.GameDTO;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Game;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Game;
 import li.zhang.app_stat_tracker_rest_api.persistence.mapper.GameMapper;
 import li.zhang.app_stat_tracker_rest_api.services.core.GameService;
 import li.zhang.app_stat_tracker_rest_api.utils.constants.RestParams;

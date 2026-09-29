@@ -1,4 +1,4 @@
-package li.zhang.app_stat_tracker_rest_api.persistence.entity;
+package li.zhang.app_stat_tracker_rest_api.persistence.entity.core;
 
 public class League {
     // league owns teams and games

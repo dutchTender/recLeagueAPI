@@ -1,7 +1,7 @@
 package li.zhang.app_stat_tracker_rest_api.persistence.dao;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

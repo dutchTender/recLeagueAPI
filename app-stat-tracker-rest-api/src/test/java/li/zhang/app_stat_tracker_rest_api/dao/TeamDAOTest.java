@@ -5,7 +5,7 @@ package li.zhang.app_stat_tracker_rest_api.dao;
 
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
 
-import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.core.Team;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;

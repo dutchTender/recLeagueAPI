@@ -1,4 +1,4 @@
-package li.zhang.app_stat_tracker_rest_api.persistence.entity;
+package li.zhang.app_stat_tracker_rest_api.persistence.entity.core;
 import jakarta.persistence.*;
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseEntity;
 import lombok.Getter;
