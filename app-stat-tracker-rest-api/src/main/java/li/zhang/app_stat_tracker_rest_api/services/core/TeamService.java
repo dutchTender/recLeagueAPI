@@ -2,6 +2,7 @@ package li.zhang.app_stat_tracker_rest_api.services.core;
 
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseService;
 import li.zhang.app_stat_tracker_rest_api.persistence.dao.TeamDAO;
+import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
 import org.jspecify.annotations.NonNull;
@@ -29,6 +30,7 @@ public class TeamService implements BaseService<Team, TeamDTO> {
     @Override
     public TeamDTO find(Long id) {
         List<TeamDTO> rawDTOResult = teamRepository.findTeamById(id);
+        logger.info(rawDTOResult.toString());
         return getTeamDTO(rawDTOResult);
     }
 
@@ -45,7 +47,25 @@ public class TeamService implements BaseService<Team, TeamDTO> {
         rawDTOResult.forEach(team -> {
             resultDTO.addHomeGame(team.getHomeGames().stream().findFirst().orElse(null));
             resultDTO.addAwayGame(team.getAwayGames().stream().findFirst().orElse(null));
-            resultDTO.addPlayer(team.getPlayers().stream().findFirst().orElse(null));
+            PlayerDTO playerDTO = team.getPlayers().stream().findFirst().orElse(null);
+            assert playerDTO != null;
+            // check if player already exist in result set.
+            // if yes. that means there are additional matched game stats rows
+            resultDTO.getPlayers().stream()
+                    .filter(obj -> playerDTO.getId().equals(obj.getId()))
+                    .findFirst()
+                    .ifPresentOrElse(
+                            matchedObj -> {
+                                // Action A: Runs if the object exists
+                                matchedObj.addPlayerSeasonStats(playerDTO.getGameStats());
+                            },
+                            () -> {
+                                // Action B: Runs if no matching object was found
+                                playerDTO.addPlayerSeasonStats(playerDTO.getGameStats());
+                                playerDTO.setGameStats(null);
+                                resultDTO.addPlayer(playerDTO);
+                            }
+                    );
         });
         return resultDTO;
     }

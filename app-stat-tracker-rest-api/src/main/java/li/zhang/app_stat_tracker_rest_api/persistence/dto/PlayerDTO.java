@@ -2,6 +2,7 @@ package li.zhang.app_stat_tracker_rest_api.persistence.dto;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -20,7 +21,7 @@ public class PlayerDTO {
     String phone;
     String sex;
     TeamDTO team;
-    PlayerStatsDTO gameStats = new PlayerStatsDTO();
+    PlayerStatsDTO gameStats;
     Set<PlayerStatsDTO> seasonStats = new HashSet<>();
 
     public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex) {
@@ -80,5 +81,18 @@ public class PlayerDTO {
     }
     public void removePlayerStats(PlayerStatsDTO playerStats) {
         this.seasonStats.remove(playerStats);
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PlayerDTO playerDTO = (PlayerDTO) o;
+        return Objects.equals(id, playerDTO.id) && Objects.equals(userName, playerDTO.userName) && Objects.equals(firstName, playerDTO.firstName) && Objects.equals(lastName, playerDTO.lastName) && Objects.equals(email, playerDTO.email) && Objects.equals(phone, playerDTO.phone) && Objects.equals(sex, playerDTO.sex) && Objects.equals(team, playerDTO.team);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, firstName, lastName, email, phone, sex);
     }
 }
