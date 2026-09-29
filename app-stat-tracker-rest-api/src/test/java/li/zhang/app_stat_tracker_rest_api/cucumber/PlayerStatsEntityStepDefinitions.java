@@ -8,12 +8,9 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dao.PlayerStatsDAO;
 import li.zhang.app_stat_tracker_rest_api.persistence.dto.PlayerDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Player;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.PlayerStats;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerStatsEntityStepDefinitions {
@@ -33,14 +30,11 @@ public class PlayerStatsEntityStepDefinitions {
 
     @When("a user saves a new PlayerStat for a Player named {string}")
     public void aUserSavesANewCustomerNamed(String name) {
-
         PlayerStats playerStats = new PlayerStats();
         Player testPlayer = new Player(name);
         Player newPlayer = this.playerDAO.save(testPlayer);
         playerStats.setPlayer(newPlayer);
         playerStatsDAO.save(playerStats);
-
-
     }
 
     @Then("a playerStat should exist for a Player named {string} should exist in the database")
