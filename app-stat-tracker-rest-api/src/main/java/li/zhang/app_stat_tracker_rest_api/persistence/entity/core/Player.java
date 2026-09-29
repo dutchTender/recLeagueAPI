@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import li.zhang.app_stat_tracker_rest_api.model.base.BaseEntity;
+import li.zhang.app_stat_tracker_rest_api.persistence.entity.base.UserInfo;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Objects;
@@ -51,6 +52,10 @@ public class Player implements BaseEntity{
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private UserInfo user;
 
     @OneToMany(mappedBy = "player" , cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<PlayerStats> playerStats;
