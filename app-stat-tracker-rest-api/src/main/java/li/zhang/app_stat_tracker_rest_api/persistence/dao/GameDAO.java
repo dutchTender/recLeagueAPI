@@ -25,8 +25,8 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "left Join g.awayTeam at "+
             "left join ht.players htp "+
             "left join at.players atp "+
-            "left join htp.playerStats hgs "+
-            "left join atp.playerStats ags "+
+            "left join htp.playerStats hgs ON hgs.game.id = g.id "+
+            "left join atp.playerStats ags ON ags.game.id = g.id "+
             "WHERE g.id = :id")
     List<GameDTO> findGameById(@Param("id")Long id);
 
@@ -42,8 +42,8 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "left Join g.awayTeam at "+
             "left join ht.players htp "+
             "left join at.players atp "+
-            "left join htp.playerStats hgs "+
-            "left join atp.playerStats ags "+
+            "left join htp.playerStats hgs ON hgs.game.id = g.id "+
+            "left join atp.playerStats ags ON ags.game.id = g.id "+
             "WHERE g.gameTime = :gameTime")
     List<GameDTO> findGameByGameTime(@Param("gameTime")String gameTime);
 
