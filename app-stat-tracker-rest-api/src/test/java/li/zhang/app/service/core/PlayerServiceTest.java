@@ -28,11 +28,11 @@ class PlayerServiceTest {
         // Arrange
         Long entityId = 1L;
         PlayerDTO playerDTO = new PlayerDTO();
-        playerDTO.setUserName("Alice");
+        playerDTO.getUser().setUserName("Alice");
         when(repository.findPlayerById(entityId)).thenReturn(List.of(playerDTO));
         PlayerDTO result = service.find(entityId);
         assertNotNull(result);
-        assertEquals("Alice", result.getUserName());
+        assertEquals("Alice", result.getUser().getUserName());
 
         verify(repository, times(1)).findPlayerById(entityId);
     }

@@ -14,7 +14,8 @@ import java.util.Optional;
 
 public interface PlayerDAO extends JpaRepository<Player, Long> , QueryByExampleExecutor<Player> {
 
-    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
+    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( " +
+            "  new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName,ui.lastName, ui.gender, ui.height, ui.weight, ui.age, ui.email), " +
             "  new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate, hg.gameTime, hg.gameLocation)," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))," +
@@ -24,10 +25,12 @@ public interface PlayerDAO extends JpaRepository<Player, Long> , QueryByExampleE
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
             "left join p.playerStats ps "+
+            "left join UserInfo ui on ui.id = p.user.id "+
             "WHERE p.id = :id")
     List<PlayerDTO> findPlayerById(@Param("id") Long id);
 
-    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
+    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( " +
+            "  new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName,ui.lastName, ui.gender, ui.height, ui.weight, ui.age, ui.email), " +
             "  new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate, hg.gameTime, hg.gameLocation)," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation))," +
@@ -37,27 +40,32 @@ public interface PlayerDAO extends JpaRepository<Player, Long> , QueryByExampleE
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
             "left join p.playerStats ps "+
-            "WHERE p.userName = :name")
+            "left join UserInfo ui on ui.id = p.user.id "+
+            "WHERE p.user.userName = :name")
     List<PlayerDTO> findPlayerByUserName(@Param("name") String name);
 
-    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
+    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( " +
+            "  new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName,ui.lastName, ui.gender, ui.height, ui.weight, ui.age, ui.email), " +
             "  new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate, hg.gameTime, hg.gameLocation)," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate, ag.gameTime, ag.gameLocation))" + ") " +
             "FROM Player p " +
             "left JOIN p.team t " + // Explicit JOIN to fetch team data efficiently
             "left JOIN t.homeGames hg " +
-            "left JOIN t.awayGames ag ")
+            "left JOIN t.awayGames ag " +
+            "left join UserInfo ui on ui.id = p.user.id ")
     List<PlayerDTO> findAllBy();
 
-    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( p.id, p.userName, p.firstName, p.lastName,p.email, p.phone, p.sex, " +
+    @Query("SELECT new li.zhang.app.persistence.dto.core.PlayerDTO( " +
+            "  new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName,ui.lastName, ui.gender, ui.height, ui.weight, ui.age, ui.email), " +
             "  new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate, hg.gameTime, hg.gameLocation)," +
             "  new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate, ag.gameTime, ag.gameLocation))" + ") " +
             "FROM Player p " +
             "left JOIN p.team t " + // Explicit JOIN to fetch team data efficiently
             "left JOIN t.homeGames hg " +
-            "left JOIN t.awayGames ag ")
+            "left JOIN t.awayGames ag " +
+            "left join UserInfo ui on ui.id = p.user.id ")
     Page<PlayerDTO> findAllBy(Pageable pageable);
 
     List<Player> findAllPlayerBy(Example<Player> example);

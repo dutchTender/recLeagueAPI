@@ -18,8 +18,10 @@ public class UserInfo implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String username;
+    @Column(unique = true)
+    String userName;
     String password;
+    @Column(unique = true)
     String email;
     String firstName;
     String lastName;
@@ -30,9 +32,14 @@ public class UserInfo implements BaseEntity {
     String billingAddress;
     String phone;
     String address;
+    Integer age;
+    String gender;
+    Integer height;
+    Integer weight;
+
 
     public UserInfo(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public UserInfo() {
@@ -45,11 +52,11 @@ public class UserInfo implements BaseEntity {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
-        return Objects.equals(id, userInfo.id) && Objects.equals(username, userInfo.username) && Objects.equals(password, userInfo.password) && Objects.equals(email, userInfo.email) && Objects.equals(firstName, userInfo.firstName) && Objects.equals(lastName, userInfo.lastName) && Objects.equals(billingAddress, userInfo.billingAddress) && Objects.equals(phone, userInfo.phone) && Objects.equals(address, userInfo.address);
+        return Objects.equals(id, userInfo.id) && Objects.equals(userName, userInfo.userName) && Objects.equals(password, userInfo.password) && Objects.equals(email, userInfo.email) && Objects.equals(firstName, userInfo.firstName) && Objects.equals(lastName, userInfo.lastName) && Objects.equals(billingAddress, userInfo.billingAddress) && Objects.equals(phone, userInfo.phone) && Objects.equals(address, userInfo.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, email, firstName, lastName, billingAddress, phone, address);
+        return Objects.hash(id, userName, password, email, firstName, lastName, billingAddress, phone, address);
     }
 }

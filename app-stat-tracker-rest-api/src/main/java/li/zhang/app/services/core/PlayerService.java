@@ -67,12 +67,10 @@ public class PlayerService implements BaseService<Player, PlayerDTO> {
     @NonNull
     private PlayerDTO getPlayerDTO(PlayerDTO resultDTO, List<PlayerDTO> rawDTOResult) {
         resultDTO.setId(rawDTOResult.get(0).getId());
-        resultDTO.setUserName(rawDTOResult.get(0).getUserName());
-        resultDTO.setFirstName(rawDTOResult.get(0).getFirstName());
-        resultDTO.setLastName(rawDTOResult.get(0).getLastName());
-        resultDTO.setEmail(rawDTOResult.get(0).getEmail());
-        resultDTO.setPhone(rawDTOResult.get(0).getPhone());
-        resultDTO.setSex(rawDTOResult.get(0).getSex());
+        resultDTO.setPosition(rawDTOResult.get(0).getPosition());
+        resultDTO.setNumber(rawDTOResult.get(0).getNumber());
+        resultDTO.setCaptain(rawDTOResult.get(0).isCaptain());
+        resultDTO.setUser(rawDTOResult.get(0).getUser());
         resultDTO.setTeam(rawDTOResult.get(0).getTeam());
         rawDTOResult.forEach(playerDTO -> resultDTO.addPlayerSeasonStats(playerDTO.getGameStats()));
 

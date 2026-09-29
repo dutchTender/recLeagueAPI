@@ -1,9 +1,12 @@
 package li.zhang.app.services.util;
 
+import li.zhang.app.persistence.dao.base.UserInfoDAO;
 import li.zhang.app.persistence.dao.core.GameDAO;
 import li.zhang.app.persistence.dao.core.PlayerDAO;
 import li.zhang.app.persistence.dao.core.PlayerStatsDAO;
 import li.zhang.app.persistence.dao.core.TeamDAO;
+import li.zhang.app.persistence.dto.base.UserInfoDTO;
+import li.zhang.app.persistence.entity.base.UserInfo;
 import li.zhang.app.persistence.entity.core.Game;
 import li.zhang.app.persistence.entity.core.Player;
 import li.zhang.app.persistence.entity.core.PlayerStats;
@@ -17,46 +20,49 @@ public class SeedService {
     private final TeamDAO teamDAO;
     private final GameDAO gameDAO;
     private final PlayerStatsDAO playerStatsDAO;
-    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO, PlayerStatsDAO playerStatsDAO) {
+    private final UserInfoDAO userInfoDAO;
+    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO, PlayerStatsDAO playerStatsDAO, UserInfoDAO userInfoDAO) {
         this.playerDAO = playerDAO;
         this.teamDAO = teamDAO;
         this.gameDAO = gameDAO;
         this.playerStatsDAO = playerStatsDAO;
+        this.userInfoDAO = userInfoDAO;
     }
 
     public void seedDB(){
 /*
 start of team 1
  */
+        UserInfo user1 = new UserInfo("dutchTender");
+        user1.setEmail("lzhang421@gmailo.com");
+        user1.setFirstName("li");
+        user1.setLastName("zhang");
+        user1.setGender("male");
+        user1.setPhone("571-839-7777");
+        UserInfo newAppUser1 = this.userInfoDAO.save(user1);
 
-        Player player1 = new Player();
-        player1.setUserName("dutchTender");
-        player1.setEmail("lzhang421@gmailo.com");
-        player1.setFirstName("li");
-        player1.setLastName("zhang");
-        player1.setSex("male");
-        player1.setPhone("571-839-7777");
-
+        Player player1 = new Player(newAppUser1);
         this.playerDAO.saveAndFlush(player1);
 
-        Player player2 = new Player();
-        player2.setUserName("black-lighting");
-        player2.setEmail("lzhang4333@gmailo.com");
-        player2.setFirstName("mike");
-        player2.setLastName("johnson");
-        player2.setSex("male");
-        player2.setPhone("571-555-7777");
 
+        UserInfo user2 = new UserInfo("black-lighting");
+        user2.setEmail("lzhang4333@gmailo.com");
+        user2.setFirstName("mike");
+        user2.setLastName("johnson");
+        user2.setGender("male");
+        user2.setPhone("571-555-7777");
+        UserInfo newAppUser2 = this.userInfoDAO.save(user2);
+        Player player2 = new Player(newAppUser2);
         this.playerDAO.saveAndFlush(player2);
 
-        Player player3 = new Player();
-        player3.setUserName("white-thunder");
-        player3.setEmail("xxxx@gmailo.com");
-        player3.setFirstName("nick");
-        player3.setLastName("price");
-        player3.setSex("male");
-        player3.setPhone("222-555-7777");
-
+        UserInfo user3 = new UserInfo("white-thunder");
+        user3.setEmail("xxxx@gmailo.com");
+        user3.setFirstName("nick");
+        user3.setLastName("price");
+        user3.setGender("male");
+        user3.setPhone("222-555-7777");
+        UserInfo newAppUser3 = this.userInfoDAO.save(user3);
+        Player player3 = new Player(newAppUser3);
         this.playerDAO.saveAndFlush(player3);
 
 
@@ -77,35 +83,37 @@ start of team 1
 /*
 start of team 2
  */
-        Player player4 = new Player();
-        player4.setUserName("gentle-giant");
-        player4.setEmail("lzhxxxx1@gmailo.com");
-        player4.setFirstName("jason");
-        player4.setLastName("borne");
-        player4.setSex("male");
-        player4.setPhone("571-839-7777");
-
+        UserInfo user4 = new UserInfo("gentle-giant");
+        user4.setEmail("lzhxxxx1@gmailo.com");
+        user4.setFirstName("jason");
+        user4.setLastName("borne");
+        user4.setGender("male");
+        user4.setPhone("571-839-7777");
+        UserInfo newAppUser4= this.userInfoDAO.save(user4);
+        Player player4 = new Player(newAppUser4);
         this.playerDAO.saveAndFlush(player4);
 
-        Player player5 = new Player();
-        player5.setUserName("skip to my lu");
-        player5.setEmail("2342525t@gmailo.com");
-        player5.setFirstName("mike");
-        player5.setLastName("ryan");
-        player5.setSex("male");
-        player5.setPhone("571-555-7777");
 
+        UserInfo user5 = new UserInfo("skip_to-myLu");
+        user5.setEmail("2342525t@gmailo.com");
+        user5.setFirstName("mike");
+        user5.setLastName("ryan");
+        user5.setGender("male");
+        user5.setPhone("571-555-7777");
+        UserInfo newAppUser5 = this.userInfoDAO.save(user5);
+        Player player5 = new Player(newAppUser5);
         this.playerDAO.saveAndFlush(player5);
 
-        Player player6 = new Player();
-        player6.setUserName("while chocolate");
-        player6.setEmail("x4444444x@gmailo.com");
-        player6.setFirstName("jason");
-        player6.setLastName("williams");
-        player6.setSex("male");
-        player6.setPhone("222-555-7777");
 
-        this.playerDAO.saveAndFlush(player3);
+        UserInfo user6 = new UserInfo("while-chocolate");
+        user6.setEmail("x4444444x@gmailo.com");
+        user6.setFirstName("jason");
+        user6.setLastName("williams");
+        user6.setGender("male");
+        user6.setPhone("222-555-7777");
+        UserInfo newAppUser6 = this.userInfoDAO.save(user6);
+        Player player6 = new Player(newAppUser6);
+        this.playerDAO.saveAndFlush(player6);
 
 
         Team team2 = new Team("Team-lightning");

@@ -31,7 +31,7 @@ public class PlayerStatsEntityStepDefinitions {
     @When("a user saves a new PlayerStat for a Player named {string}")
     public void aUserSavesANewPlayerStatsForPlayerNamed(String name) {
         PlayerStats playerStats = new PlayerStats();
-        Player testPlayer = new Player(name);
+        Player testPlayer = new Player();
         Player newPlayer = this.playerDAO.save(testPlayer);
         playerStats.setPlayer(newPlayer);
         playerStatsDAO.save(playerStats);

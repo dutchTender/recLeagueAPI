@@ -8,12 +8,18 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@JsonPropertyOrder({ "id", "userName", "firstName", "lastName", "email", "phone" })
-public class UserDTO {
+@JsonPropertyOrder({ "id", "userName", "firstName", "lastName", "gender","height","weight","age","email" })
+public class UserInfoDTO {
     Long id;
     String userName;
     String firstName;
     String lastName;
+    String gender;
+    Integer height;
+    Integer weight;
+    Integer age;
     String email;
-    String phone;
+
+
 }
+

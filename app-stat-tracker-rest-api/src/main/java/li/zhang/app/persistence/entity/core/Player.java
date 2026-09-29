@@ -7,7 +7,6 @@ import li.zhang.app.model.base.BaseEntity;
 import li.zhang.app.persistence.entity.base.UserInfo;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.Objects;
 import java.util.Set;
 
 
@@ -21,33 +20,15 @@ public class Player implements BaseEntity{
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    public Player(String name) {
-        this.userName = name;
+    public Player(UserInfo userInfo) {
+       this.user =  userInfo;
     }
-
     public Player() {
     }
-    @Column(unique = true)
-    private String userName;
-    private String firstName;
-    private String lastName;
-    @Column(unique = true)
-    private String email;
-    private String phone;
-    private String sex;
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return Objects.equals(id, player.id) && Objects.equals(userName, player.userName) && Objects.equals(firstName, player.firstName) && Objects.equals(lastName, player.lastName) && Objects.equals(email, player.email) && Objects.equals(phone, player.phone);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userName, firstName, lastName, email, phone);
-    }
+    private String position;
+    private Integer number;
+    private boolean isCaptain;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")

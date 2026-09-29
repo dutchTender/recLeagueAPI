@@ -1,5 +1,6 @@
 package li.zhang.app.persistence.dto.core;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import lombok.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,89 +11,63 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
-@JsonPropertyOrder({ "id", "userName", "firstName", "lastName", "email", "phone", "sex", "team", "gameStats", "seasonStats" })
+@Setter @JsonPropertyOrder({ "id", "position", "number", "isCaptain", "team", "gameStats", "seasonStats" })
 public class PlayerDTO {
     Long id;
-    String userName;
-    String firstName;
-    String lastName;
-    String email;
-    String phone;
-    String sex;
+    String position;
+    Integer number;
+    boolean isCaptain;
+    UserInfoDTO user;
     TeamDTO team;
     PlayerStatsDTO gameStats;
     Set<PlayerStatsDTO> seasonStats = new HashSet<>();
 
-    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.sex = sex;
-    }
-    public PlayerDTO(Long id, String userName, String firstName, String lastName, String phone, String email, String sex, TeamDTO team) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.email = email;
-        this.sex = sex;
-        this.team = team;
-    }
-    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, PlayerStatsDTO gameStats) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.sex = sex;
-        this.team = team;
-        this.gameStats = gameStats;
-    }
-    public PlayerDTO(Long id, String userName, String firstName, String lastName, String email, String phone, String sex, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.sex = sex;
-        this.team = team;
-        this.seasonStats = seasonStats;
-    }
-    public PlayerDTO(Long id, String userName, String lastName, String firstName, String email, String phone, String sex, PlayerStatsDTO gameStats) {
-        this.id = id;
-        this.userName = userName;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.email = email;
-        this.phone = phone;
-        this.sex = sex;
-        this.gameStats = gameStats;
-    }
 
     public void addPlayerSeasonStats(PlayerStatsDTO playerStats) {
         this.seasonStats.add(playerStats);
     }
+
     public void removePlayerStats(PlayerStatsDTO playerStats) {
         this.seasonStats.remove(playerStats);
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        PlayerDTO playerDTO = (PlayerDTO) o;
-        return Objects.equals(id, playerDTO.id) && Objects.equals(userName, playerDTO.userName) && Objects.equals(firstName, playerDTO.firstName) && Objects.equals(lastName, playerDTO.lastName) && Objects.equals(email, playerDTO.email) && Objects.equals(phone, playerDTO.phone) && Objects.equals(sex, playerDTO.sex) && Objects.equals(team, playerDTO.team);
+    public PlayerDTO(Long id, String position, Integer number, boolean isCaptain, UserInfoDTO user, TeamDTO team, PlayerStatsDTO gameStats) {
+        this.id = id;
+        this.position = position;
+        this.number = number;
+        this.isCaptain = isCaptain;
+        this.user = user;
+        this.team = team;
+        this.gameStats = gameStats;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userName, firstName, lastName, email, phone, sex);
+    public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, boolean isCaptain, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
+        this.id = id;
+        this.position = position;
+        this.number = number;
+        this.user = user;
+        this.isCaptain = isCaptain;
+        this.team = team;
+        this.seasonStats = seasonStats;
+    }
+
+    public PlayerDTO(Long id, String position, Integer number, boolean isCaptain, UserInfoDTO user, PlayerStatsDTO gameStats) {
+        this.id = id;
+        this.position = position;
+        this.number = number;
+        this.isCaptain = isCaptain;
+        this.user = user;
+        this.gameStats = gameStats;
+    }
+
+    public PlayerDTO(UserInfoDTO user, TeamDTO team, PlayerStatsDTO gameStats) {
+        this.user = user;
+        this.team = team;
+        this.gameStats = gameStats;
+    }
+
+    public PlayerDTO(UserInfoDTO user, TeamDTO team) {
+        this.user = user;
+        this.team = team;
     }
 }

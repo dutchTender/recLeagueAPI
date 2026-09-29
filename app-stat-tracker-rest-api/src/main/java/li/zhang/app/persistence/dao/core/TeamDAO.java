@@ -17,26 +17,30 @@ public interface TeamDAO extends JpaRepository<Team, Long>, QueryByExampleExecut
     @Query("SELECT new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
             "new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(p.id, p.position, p.number, p.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName, ui.lastName, ui.gender, ui.height, ui.weight,ui.age, ui.email),"+
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
             "left JOIN t.players p " +
             "left join p.playerStats ps "+
+            "left join UserInfo ui on ui.id = p.user.id " +
             "WHERE t.id = :id")
     List<TeamDTO> findTeamById(@Param("id") Long id);
 
     @Query("SELECT new li.zhang.app.persistence.dto.core.TeamDTO(t.id, t.teamName,t.teamCoachName, t.teamSponsors," +
             "new li.zhang.app.persistence.dto.core.GameDTO(hg.id, hg.gameType,hg.gameDate,hg.gameTime, hg.gameLocation)," +
             "new li.zhang.app.persistence.dto.core.GameDTO(ag.id, ag.gameType,ag.gameDate,ag.gameTime, ag.gameLocation)," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(p.id, p.userName, p.firstName, p.lastName, p.email, p.phone, p.sex," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(p.id, p.position, p.number, p.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(ui.id, ui.userName, ui.firstName, ui.lastName, ui.gender, ui.height, ui.weight,ui.age, ui.email),"+
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ps.id, ps.points, ps.assists, ps.rebounds, ps.turnOvers)"+") )" +
             "FROM Team t " +
             "left JOIN t.homeGames hg " +
             "left JOIN t.awayGames ag " +
             "left JOIN t.players p " +
             "left join p.playerStats ps "+
+            "left join UserInfo ui on ui.id = p.user.id " +
             "WHERE t.teamName = :teamName")
     List<TeamDTO> findTeamByTeamName(@Param("teamName") String teamName);
 

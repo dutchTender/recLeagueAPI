@@ -14,11 +14,13 @@ import java.util.Optional;
 
 public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecutor<Game> {
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
-            " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.userName, htp.firstName, htp.lastName, htp.email, htp.phone, htp.sex," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, htp.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(hui.id, hui.userName, hui.firstName, hui.lastName, hui.gender, hui.height, hui.weight,hui.age, hui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(hgs.id, hgs.points, hgs.assists,hgs.rebounds, hgs.turnOvers)))," +
-            " new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.userName, atp.firstName, atp.lastName, atp.email, atp.phone, atp.sex," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, atp.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(aui.id, aui.userName, aui.firstName, aui.lastName, aui.gender, aui.height, aui.weight,aui.age, aui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ags.id, ags.points, ags.assists,ags.rebounds, ags.turnOvers))))"+
             "FROM Game g " +
             "left Join g.homeTeam ht "+
@@ -27,15 +29,19 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "left join at.players atp "+
             "left join htp.playerStats hgs ON hgs.game.id = g.id "+
             "left join atp.playerStats ags ON ags.game.id = g.id "+
+            "left join UserInfo hui on hui.id = htp.id "+
+            "left join UserInfo aui on aui.id = atp.id "+
             "WHERE g.id = :id")
     List<GameDTO> findGameById(@Param("id")Long id);
 
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
-            " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.userName, htp.firstName, htp.lastName, htp.email, htp.phone, htp.sex," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, htp.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(hui.id, hui.userName, hui.firstName, hui.lastName, hui.gender, hui.height, hui.weight,hui.age, hui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(hgs.id, hgs.points, hgs.assists,hgs.rebounds, hgs.turnOvers)))," +
-            " new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.userName, atp.firstName, atp.lastName, atp.email, atp.phone, atp.sex," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, atp.isCaptain," +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(aui.id, aui.userName, aui.firstName, aui.lastName, aui.gender, aui.height, aui.weight,aui.age, aui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ags.id, ags.points, ags.assists,ags.rebounds, ags.turnOvers))))"+
             "FROM Game g " +
             "left Join g.homeTeam ht "+
@@ -44,6 +50,8 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "left join at.players atp "+
             "left join htp.playerStats hgs ON hgs.game.id = g.id "+
             "left join atp.playerStats ags ON ags.game.id = g.id "+
+            "left join UserInfo hui on hui.id = htp.id "+
+            "left join UserInfo aui on aui.id = atp.id "+
             "WHERE g.gameTime = :gameTime")
     List<GameDTO> findGameByGameTime(@Param("gameTime")String gameTime);
 
