@@ -29,7 +29,7 @@ public class PlayerStatsEntityStepDefinitions {
     }
 
     @When("a user saves a new PlayerStat for a Player named {string}")
-    public void aUserSavesANewCustomerNamed(String name) {
+    public void aUserSavesANewPlayerStatsForPlayerNamed(String name) {
         PlayerStats playerStats = new PlayerStats();
         Player testPlayer = new Player(name);
         Player newPlayer = this.playerDAO.save(testPlayer);

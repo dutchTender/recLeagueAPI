@@ -8,7 +8,6 @@ import li.zhang.app_stat_tracker_rest_api.persistence.dto.TeamDTO;
 import li.zhang.app_stat_tracker_rest_api.persistence.entity.Team;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.List;
 
 
@@ -27,12 +26,12 @@ public class TeamEntityStepDefinitions {
     }
 
     @When("a user saves a new team named {string}")
-    public void aUserSavesANewCustomerNamed(String name) {
+    public void aUserSavesANewTeamNamed(String name) {
         repository.save(new Team(name));
     }
 
     @Then("a team named {string} should exist in the database")
-    public void aCustomerNamedShouldExistInTheDatabase(String name) {
+    public void aTeamNamedShouldExistInTheDatabase(String name) {
         List<TeamDTO> team = repository.findTeamByTeamName(name);
         assertEquals(team.get(0).getTeamName(), name, "Customer should be found in the database");
         log.info("cucumber tests completed");
