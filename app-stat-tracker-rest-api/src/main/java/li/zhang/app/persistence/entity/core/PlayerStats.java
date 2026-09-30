@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import li.zhang.app.model.base.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Objects;
 
 @Entity
@@ -15,22 +14,19 @@ import java.util.Objects;
 @Getter
 @Setter
 public class PlayerStats implements  BaseEntity {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Player player;
-
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     public Game game;
-
     public Integer points;
     public Integer rebounds;
     public Integer assists;
     public Integer turnOvers;
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

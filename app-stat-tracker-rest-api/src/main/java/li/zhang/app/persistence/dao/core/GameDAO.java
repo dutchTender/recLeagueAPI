@@ -77,7 +77,6 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "WHERE g.gameDate = :gameDate")
     List<GameDTO> findGameByGameDate(@Param("gameDate")String gameDate);
 
-
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
             " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors)," +
             " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors))"+
@@ -95,6 +94,5 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
     Page<GameDTO> findAllBy(Pageable pageable);
 
     List<Game> findAllBy(Example<Game> example);
-
     Optional<Game> findGameBy(Example<Game> example);
 }
