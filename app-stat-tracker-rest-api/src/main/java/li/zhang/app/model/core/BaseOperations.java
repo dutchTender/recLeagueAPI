@@ -1,8 +1,6 @@
 package li.zhang.app.model.core;
-
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
-
 import java.util.List;
 
 public interface BaseOperations <T extends BaseEntity, K> {

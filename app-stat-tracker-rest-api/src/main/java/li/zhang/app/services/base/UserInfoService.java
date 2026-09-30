@@ -37,12 +37,12 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
 
     @Override
     public List<UserInfoDTO> findAll() {
-        return this.userInfoDAO.findAllUserInfo();
+        return this.userInfoDAO.findAllBy();
     }
 
     @Override
     public List<UserInfo> findAllByExample(Example<UserInfo> example) {
-        return this.userInfoDAO.findAllUserInfoBy(example);
+        return this.userInfoDAO.findAllBy(example);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
         Sort sort = Sort.by(direction, sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
         this.getLogger().log(Level.INFO, "findAllPaginatedAndSorted() params : - {}", pageable);
-        return this.userInfoDAO.findAllUserInfoPage(pageable);
+        return this.userInfoDAO.findAllBy(pageable);
     }
 
     @Override

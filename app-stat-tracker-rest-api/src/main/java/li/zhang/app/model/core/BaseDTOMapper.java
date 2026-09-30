@@ -1,6 +1,4 @@
 package li.zhang.app.model.core;
-
-
 import java.util.List;
 
 public interface BaseDTOMapper<T, K>{
