@@ -1,7 +1,7 @@
 package li.zhang.app.persistence.entity.base;
 
 import jakarta.persistence.*;
-import li.zhang.app.model.base.BaseEntity;
+import li.zhang.app.model.core.BaseEntity;
 import li.zhang.app.persistence.entity.core.Player;
 import lombok.Getter;
 import lombok.Setter;

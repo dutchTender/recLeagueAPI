@@ -1,12 +1,12 @@
-package li.zhang.app.controller;
+package li.zhang.app.controller.core;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import li.zhang.app.model.abs.AbstractAPIResponse;
-import li.zhang.app.model.abs.AbstractController;
-import li.zhang.app.model.abs.AbstractRestMetaData;
-import li.zhang.app.model.abs.AbstractRestResponse;
-import li.zhang.app.model.base.BaseService;
+import li.zhang.app.model.base.AbstractAPIResponse;
+import li.zhang.app.model.base.AbstractController;
+import li.zhang.app.model.base.AbstractRestMetaData;
+import li.zhang.app.model.base.AbstractRestResponse;
+import li.zhang.app.model.core.BaseService;
 import li.zhang.app.model.constants.QueryConstants;
 import li.zhang.app.persistence.dto.core.TeamDTO;
 import li.zhang.app.persistence.entity.core.Team;

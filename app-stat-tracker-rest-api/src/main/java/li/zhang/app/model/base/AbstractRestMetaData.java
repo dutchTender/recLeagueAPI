@@ -1,4 +1,4 @@
-package li.zhang.app.model.abs;
+package li.zhang.app.model.base;
 
 import lombok.Getter;
 import lombok.Setter;

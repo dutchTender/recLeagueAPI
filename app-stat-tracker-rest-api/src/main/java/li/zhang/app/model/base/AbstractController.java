@@ -1,8 +1,8 @@
-package li.zhang.app.model.abs;
-import li.zhang.app.model.base.BaseEntity;
+package li.zhang.app.model.base;
+import li.zhang.app.model.core.BaseEntity;
 
 
-public abstract class AbstractController<T extends BaseEntity, K> extends  AbstractReadController<T,K> {
+public abstract class AbstractController<T extends BaseEntity, K> extends AbstractReadController<T,K> {
 
 
     protected final T createEntity(final T entity) {

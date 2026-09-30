@@ -1,6 +1,6 @@
-package li.zhang.app.controller;
+package li.zhang.app.controller.base;
 
-import li.zhang.app.services.util.TokenService;
+import li.zhang.app.services.base.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

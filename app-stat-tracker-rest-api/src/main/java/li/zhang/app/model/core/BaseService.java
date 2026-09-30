@@ -1,4 +1,4 @@
-package li.zhang.app.model.base;
+package li.zhang.app.model.core;
 
 import java.util.logging.Logger;
 

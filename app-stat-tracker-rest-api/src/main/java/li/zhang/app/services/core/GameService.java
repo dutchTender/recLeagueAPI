@@ -1,6 +1,6 @@
 package li.zhang.app.services.core;
 
-import li.zhang.app.model.base.BaseService;
+import li.zhang.app.model.core.BaseService;
 import li.zhang.app.persistence.dao.core.GameDAO;
 
 import li.zhang.app.persistence.dto.core.GameDTO;

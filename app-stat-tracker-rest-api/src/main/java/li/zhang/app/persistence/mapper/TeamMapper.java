@@ -1,6 +1,6 @@
 package li.zhang.app.persistence.mapper;
 
-import li.zhang.app.model.base.BaseDTOMapper;
+import li.zhang.app.model.core.BaseDTOMapper;
 
 import li.zhang.app.persistence.dto.core.TeamDTO;
 import li.zhang.app.persistence.entity.core.Team;

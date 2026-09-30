@@ -1,7 +1,7 @@
-package li.zhang.app.model.abs;
+package li.zhang.app.model.base;
 
-import li.zhang.app.model.base.BaseEntity;
-import li.zhang.app.model.base.BaseService;
+import li.zhang.app.model.core.BaseEntity;
+import li.zhang.app.model.core.BaseService;
 import org.springframework.data.domain.Example;
 
 import java.util.List;

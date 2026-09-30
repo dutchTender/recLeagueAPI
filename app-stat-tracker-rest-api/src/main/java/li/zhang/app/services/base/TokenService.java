@@ -1,4 +1,4 @@
-package li.zhang.app.services.util;
+package li.zhang.app.services.base;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
