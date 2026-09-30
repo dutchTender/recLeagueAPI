@@ -55,6 +55,29 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
             "WHERE g.gameTime = :gameTime")
     List<GameDTO> findGameByGameTime(@Param("gameTime")String gameTime);
 
+
+    @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, " +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(hui.id, hui.userName, hui.firstName, hui.lastName, hui.gender, hui.height, hui.weight,hui.age, hui.email) ," +
+            "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(hgs.id, hgs.points, hgs.assists,hgs.rebounds, hgs.turnOvers)))," +
+            "new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, " +
+            "new li.zhang.app.persistence.dto.base.UserInfoDTO(aui.id, aui.userName, aui.firstName, aui.lastName, aui.gender, aui.height, aui.weight,aui.age, aui.email) ," +
+            "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ags.id, ags.points, ags.assists,ags.rebounds, ags.turnOvers))))"+
+            "FROM Game g " +
+            "left Join g.homeTeam ht "+
+            "left Join g.awayTeam at "+
+            "left join ht.players htp "+
+            "left join at.players atp "+
+            "left join htp.playerStats hgs ON hgs.game.id = g.id "+
+            "left join atp.playerStats ags ON ags.game.id = g.id "+
+            "left join UserInfo hui on hui.id = htp.id "+
+            "left join UserInfo aui on aui.id = atp.id "+
+            "WHERE g.gameDate = :gameDate")
+    List<GameDTO> findGameByGameDate(@Param("gameDate")String gameDate);
+
+
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
             " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors)," +
             " new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors))"+
