@@ -15,11 +15,11 @@ import java.util.Optional;
 public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecutor<Game> {
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
             "new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, htp.isCaptain," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number," +
             "new li.zhang.app.persistence.dto.base.UserInfoDTO(hui.id, hui.userName, hui.firstName, hui.lastName, hui.gender, hui.height, hui.weight,hui.age, hui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(hgs.id, hgs.points, hgs.assists,hgs.rebounds, hgs.turnOvers)))," +
             "new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, atp.isCaptain," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number," +
             "new li.zhang.app.persistence.dto.base.UserInfoDTO(aui.id, aui.userName, aui.firstName, aui.lastName, aui.gender, aui.height, aui.weight,aui.age, aui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ags.id, ags.points, ags.assists,ags.rebounds, ags.turnOvers))))"+
             "FROM Game g " +
@@ -36,11 +36,11 @@ public interface GameDAO extends JpaRepository<Game, Long>, QueryByExampleExecut
 
     @Query("SELECT new li.zhang.app.persistence.dto.core.GameDTO(g.id, g.gameType, g.gameDate, g.gameTime, g.gameLocation," +
             "new li.zhang.app.persistence.dto.core.TeamDTO(ht.id, ht.teamName, ht.teamCoachName, ht.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, htp.isCaptain," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(htp.id, htp.position, htp.number, " +
             "new li.zhang.app.persistence.dto.base.UserInfoDTO(hui.id, hui.userName, hui.firstName, hui.lastName, hui.gender, hui.height, hui.weight,hui.age, hui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(hgs.id, hgs.points, hgs.assists,hgs.rebounds, hgs.turnOvers)))," +
             "new li.zhang.app.persistence.dto.core.TeamDTO(at.id, at.teamName, at.teamCoachName, at.teamSponsors," +
-            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, atp.isCaptain," +
+            "new li.zhang.app.persistence.dto.core.PlayerDTO(atp.id, atp.position, atp.number, " +
             "new li.zhang.app.persistence.dto.base.UserInfoDTO(aui.id, aui.userName, aui.firstName, aui.lastName, aui.gender, aui.height, aui.weight,aui.age, aui.email) ," +
             "new li.zhang.app.persistence.dto.core.PlayerStatsDTO(ags.id, ags.points, ags.assists,ags.rebounds, ags.turnOvers))))"+
             "FROM Game g " +

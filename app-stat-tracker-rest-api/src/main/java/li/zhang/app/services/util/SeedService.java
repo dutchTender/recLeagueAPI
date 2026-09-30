@@ -76,10 +76,7 @@ start of team 1
         this.playerDAO.saveAndFlush(player1);
         this.playerDAO.saveAndFlush(player2);
         this.playerDAO.saveAndFlush(player3);
-        team1.addPlayer(player1);
-        team1.addPlayer(player2);
-        team1.addPlayer(player3);
-        this.teamDAO.saveAndFlush(team1);
+
 /*
 start of team 2
  */
@@ -127,10 +124,6 @@ start of team 2
         this.playerDAO.saveAndFlush(player5);
         this.playerDAO.saveAndFlush(player6);
 
-        team2.addPlayer(player4);
-        team2.addPlayer(player5);
-        team2.addPlayer(player6);
-        this.teamDAO.saveAndFlush(team2);
 
 
 /*
@@ -142,7 +135,7 @@ crate first game
         game.setHomeTeam(team1);
         game.setAwayTeam(team2);
         game.setGameTime("12:00PM");
-        game.setGameDate("2/22/2227");
+        game.setGameDate("2-22-2227");
         this.gameDAO.saveAndFlush(game);
 
 

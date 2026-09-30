@@ -3,9 +3,11 @@ package li.zhang.app.cucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import li.zhang.app.persistence.dao.base.UserInfoDAO;
 import li.zhang.app.persistence.dao.core.PlayerDAO;
 import li.zhang.app.persistence.dao.core.PlayerStatsDAO;
 import li.zhang.app.persistence.dto.core.PlayerDTO;
+import li.zhang.app.persistence.entity.base.UserInfo;
 import li.zhang.app.persistence.entity.core.Player;
 import li.zhang.app.persistence.entity.core.PlayerStats;
 import org.slf4j.Logger;
@@ -17,10 +19,12 @@ public class PlayerStatsEntityStepDefinitions {
     private static final Logger log = LoggerFactory.getLogger(PlayerStatsEntityStepDefinitions.class);
     private  final PlayerDAO playerDAO;
     private final PlayerStatsDAO playerStatsDAO;
+    private final UserInfoDAO userInfoDAO;
 
-    public PlayerStatsEntityStepDefinitions(PlayerDAO playerDAO, PlayerStatsDAO playerStatsDAO) {
+    public PlayerStatsEntityStepDefinitions(PlayerDAO playerDAO, PlayerStatsDAO playerStatsDAO, UserInfoDAO userInfoDAO) {
         this.playerDAO = playerDAO;
         this.playerStatsDAO = playerStatsDAO;
+        this.userInfoDAO = userInfoDAO;
     }
 
     @Given("the Player and PlayerStats database is not empty")
@@ -31,7 +35,9 @@ public class PlayerStatsEntityStepDefinitions {
     @When("a user saves a new PlayerStat for a Player named {string}")
     public void aUserSavesANewPlayerStatsForPlayerNamed(String name) {
         PlayerStats playerStats = new PlayerStats();
-        Player testPlayer = new Player();
+        UserInfo userInfo = new UserInfo(name);
+        userInfoDAO.save(userInfo);
+        Player testPlayer = new Player(userInfo);
         Player newPlayer = this.playerDAO.save(testPlayer);
         playerStats.setPlayer(newPlayer);
         playerStatsDAO.save(playerStats);

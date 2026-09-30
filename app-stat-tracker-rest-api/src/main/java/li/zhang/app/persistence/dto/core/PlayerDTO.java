@@ -16,7 +16,6 @@ public class PlayerDTO {
     Long id;
     String position;
     Integer number;
-    boolean isCaptain;
     UserInfoDTO user;
     TeamDTO team;
     PlayerStatsDTO gameStats;
@@ -31,31 +30,28 @@ public class PlayerDTO {
         this.seasonStats.remove(playerStats);
     }
 
-    public PlayerDTO(Long id, String position, Integer number, boolean isCaptain, UserInfoDTO user, TeamDTO team, PlayerStatsDTO gameStats) {
+    public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, TeamDTO team, PlayerStatsDTO gameStats) {
         this.id = id;
         this.position = position;
         this.number = number;
-        this.isCaptain = isCaptain;
         this.user = user;
         this.team = team;
         this.gameStats = gameStats;
     }
 
-    public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, boolean isCaptain, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
+    public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
         this.id = id;
         this.position = position;
         this.number = number;
         this.user = user;
-        this.isCaptain = isCaptain;
         this.team = team;
         this.seasonStats = seasonStats;
     }
 
-    public PlayerDTO(Long id, String position, Integer number, boolean isCaptain, UserInfoDTO user, PlayerStatsDTO gameStats) {
+    public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, PlayerStatsDTO gameStats) {
         this.id = id;
         this.position = position;
         this.number = number;
-        this.isCaptain = isCaptain;
         this.user = user;
         this.gameStats = gameStats;
     }

@@ -7,6 +7,8 @@ import li.zhang.app.model.base.BaseEntity;
 import li.zhang.app.persistence.entity.base.UserInfo;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -28,7 +30,6 @@ public class Player implements BaseEntity{
 
     private String position;
     private Integer number;
-    private boolean isCaptain;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
@@ -48,5 +49,15 @@ public class Player implements BaseEntity{
         this.playerStats.remove(playerStats);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return Objects.equals(id, player.id) && Objects.equals(position, player.position) && Objects.equals(number, player.number) && Objects.equals(team, player.team) && Objects.equals(user, player.user) && Objects.equals(playerStats, player.playerStats);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, position, number, team, user, playerStats);
+    }
 }

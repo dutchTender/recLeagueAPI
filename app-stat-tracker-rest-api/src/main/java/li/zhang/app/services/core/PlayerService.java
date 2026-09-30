@@ -69,7 +69,6 @@ public class PlayerService implements BaseService<Player, PlayerDTO> {
         resultDTO.setId(rawDTOResult.get(0).getId());
         resultDTO.setPosition(rawDTOResult.get(0).getPosition());
         resultDTO.setNumber(rawDTOResult.get(0).getNumber());
-        resultDTO.setCaptain(rawDTOResult.get(0).isCaptain());
         resultDTO.setUser(rawDTOResult.get(0).getUser());
         resultDTO.setTeam(rawDTOResult.get(0).getTeam());
         rawDTOResult.forEach(playerDTO -> resultDTO.addPlayerSeasonStats(playerDTO.getGameStats()));
