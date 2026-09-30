@@ -5,11 +5,12 @@ import li.zhang.app.persistence.dao.base.UserInfoDAO;
 import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.persistence.entity.base.UserInfo;
 import org.springframework.data.domain.*;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Service
 public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
 
     private static final Logger logger = Logger.getLogger(UserInfoService.class.getName());

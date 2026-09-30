@@ -11,5 +11,5 @@ public class RestParams {
     public static final String PLAYER_ENTITY_PATH = "/players";
     public static final String TEAM_ENTITY_PATH = "/teams";
     public static final String GAME_ENTITY_PATH = "/games";
-
+    public static final String USER_ENTITY_PATH = "/users";
 }

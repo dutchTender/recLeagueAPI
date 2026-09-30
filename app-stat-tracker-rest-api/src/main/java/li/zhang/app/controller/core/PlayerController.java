@@ -26,7 +26,6 @@ import java.util.List;
 @CrossOrigin(origins = RestParams.API_CLIENT_URL)
 public class PlayerController extends AbstractController<Player, PlayerDTO> {
 
-
     private final PlayerService service;
     private final PlayerMapper mapper;
     private final AbstractAPIResponse<List<PlayerDTO>> apiResponseCollection = new AbstractAPIResponse<>();
