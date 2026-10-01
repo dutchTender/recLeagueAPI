@@ -32,10 +32,6 @@ public class UserInfo implements BaseEntity {
     String email;
     String firstName;
     String lastName;
-    /*
-    a player is created when a user registers for a league
-    can be a free agent, does not need to have a team
-     */
     String billingAddress;
     String phone;
     String address;

@@ -1,6 +1,4 @@
 package li.zhang.app.persistence.dto.core;
-
-
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
