@@ -1,6 +1,7 @@
 package li.zhang.app.controller.base;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import li.zhang.app.model.base.AbstractAPIResponse;
 import li.zhang.app.model.base.AbstractController;
 import li.zhang.app.model.base.AbstractRestMetaData;
@@ -10,11 +11,13 @@ import li.zhang.app.model.core.BaseService;
 import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.persistence.dto.core.PlayerDTO;
 import li.zhang.app.persistence.entity.base.UserInfo;
+import li.zhang.app.persistence.entity.core.Player;
 import li.zhang.app.persistence.mapper.UserInfoMapper;
 import li.zhang.app.services.base.UserInfoService;
 import li.zhang.app.utils.constants.RestParams;
 import li.zhang.app.utils.constants.RestResponseMessage;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -63,6 +66,36 @@ public class UserInfoController extends AbstractController<UserInfo, UserInfoDTO
         return apiResponseSingleton.createAPIResponse(result , metaData, RestResponseMessage.USER_GET_SUCCESS,RestParams.API_STATUS_OK);
     }
 
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<AbstractRestResponse<UserInfoDTO>> findOneUserByName(@PathVariable("name") final String name) {
+        UserInfoDTO result = service.findByUserName(name);
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: find one USER - count : 1 ");
+        return apiResponseSingleton.createAPIResponse(result , metaData, RestResponseMessage.USER_GET_SUCCESS,RestParams.API_STATUS_OK);
+    }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<AbstractRestResponse<UserInfoDTO>> createUser(@RequestBody @Valid final UserInfoDTO dto) {
+        UserInfo result = service.create(mapper.toEntity(dto));
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: create USER - count : 1  ");
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+    }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<AbstractRestResponse<UserInfoDTO>> updateUser(@PathVariable("id") final Long id, @RequestBody @Valid UserInfoDTO dto) {
+         UserInfo result = service.update(mapper.toEntity(dto));
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: update USER - count : 1  ");
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<AbstractRestResponse<UserInfoDTO>> delete(@PathVariable("id") final Long id) {
+        this.service.deleteById(id);
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: delete PLAYER - count : 1  ");
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.USER_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
+    }
 
 
 

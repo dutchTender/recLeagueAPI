@@ -30,6 +30,9 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
         return this.userInfoDAO.findUserInfoBy(id).orElse(null);
     }
 
+    public UserInfoDTO findByUserName(String username) {
+        return this.userInfoDAO.findByUserName(username).orElse(null);
+    }
     @Override
     public UserInfo findByExample(Example<UserInfo> example) {
         return this.userInfoDAO.findUserInfoBy(example).orElse(null);
