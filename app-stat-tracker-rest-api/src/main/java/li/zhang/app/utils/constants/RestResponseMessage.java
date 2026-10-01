@@ -19,6 +19,13 @@ public class RestResponseMessage{
     public static final String PLAYER_GET_SUCCESS = "PLAYER retrieved successfully";
     public static final String PLAYERS_GET_SUCCESS = "PLAYERS retrieved successfully";
 
+    public static final String PLAYER_STATS_CREATE_SUCCESS = "New PLAYER STATS created successfully";
+    public static final String PLAYER_STATS_UPDATE_SUCCESS = "PLAYER STATS update successfully";
+    public static final String PLAYER_STATS_DELETE_SUCCESS = "PLAYER STATS deleted successfully";
+    public static final String PLAYER_STATS_GET_SUCCESS = "PLAYER STATS retrieved successfully";
+    public static final String PLAYERS_STATS_GET_SUCCESS = "PLAYERS STATS retrieved successfully";
+
+
 
     public static final String TEAM_CREATE_SUCCESS = "New TEAM created successfully";
     public static final String TEAM_UPDATE_SUCCESS = "TEAM update successfully";
