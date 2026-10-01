@@ -35,8 +35,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
-
     @Profile("TEST")
     @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
@@ -46,6 +44,20 @@ public class SecurityConfig {
                         .authorities("read")
                         .build()
         );
+    }
+
+    @Bean
+    @Profile("TEST")
+    public SecurityFilterChain securityFilterChainDev(HttpSecurity http) throws Exception {
+        http
+                // Disable CSRF for non-browser clients (Postman/REST API tools)
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        // Allows all requests to pass through without authentication
+                        .anyRequest().permitAll()
+                );
+
+        return http.build();
     }
 
     @Bean
@@ -66,20 +78,6 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         // Keeps Spring Filters completely away from the H2 console endpoints
         return web -> web.ignoring().requestMatchers("/h2-console/**");
-    }
-
-    @Bean
-    @Profile("TEST")
-    public SecurityFilterChain securityFilterChainDev(HttpSecurity http) throws Exception {
-        http
-                // Disable CSRF for non-browser clients (Postman/REST API tools)
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        // Allows all requests to pass through without authentication
-                        .anyRequest().permitAll()
-                );
-
-        return http.build();
     }
 
     @Bean
@@ -118,7 +116,6 @@ public class SecurityConfig {
             throw new IllegalStateException(ex);
         }
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
