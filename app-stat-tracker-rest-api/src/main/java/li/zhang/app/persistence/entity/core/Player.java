@@ -30,6 +30,7 @@ public class Player implements BaseEntity{
     }
     private String position;
     private Integer number;
+    private boolean isCaptain = false;
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
     private Team team;

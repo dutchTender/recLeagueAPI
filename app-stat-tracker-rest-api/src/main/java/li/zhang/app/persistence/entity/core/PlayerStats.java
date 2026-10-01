@@ -27,6 +27,7 @@ public class PlayerStats implements  BaseEntity {
     public Integer rebounds;
     public Integer assists;
     public Integer turnOvers;
+    public Integer fouls;
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
