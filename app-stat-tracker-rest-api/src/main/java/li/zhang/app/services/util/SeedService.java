@@ -11,6 +11,7 @@ import li.zhang.app.persistence.entity.core.Game;
 import li.zhang.app.persistence.entity.core.Player;
 import li.zhang.app.persistence.entity.core.PlayerStats;
 import li.zhang.app.persistence.entity.core.Team;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,12 +22,15 @@ public class SeedService {
     private final GameDAO gameDAO;
     private final PlayerStatsDAO playerStatsDAO;
     private final UserInfoDAO userInfoDAO;
-    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO, PlayerStatsDAO playerStatsDAO, UserInfoDAO userInfoDAO) {
+    private final PasswordEncoder passwordEncoder;
+
+    public SeedService(PlayerDAO playerDAO, TeamDAO teamDAO, GameDAO gameDAO, PlayerStatsDAO playerStatsDAO, UserInfoDAO userInfoDAO, PasswordEncoder passwordEncoder) {
         this.playerDAO = playerDAO;
         this.teamDAO = teamDAO;
         this.gameDAO = gameDAO;
         this.playerStatsDAO = playerStatsDAO;
         this.userInfoDAO = userInfoDAO;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void seedDB(){
@@ -35,6 +39,8 @@ start of team 1
  */
         UserInfo user1 = new UserInfo("dutchTender");
         user1.setEmail("lzhang421@gmailo.com");
+        user1.setPassword(passwordEncoder.encode("123456"));
+        user1.setRole("read");
         user1.setFirstName("li");
         user1.setLastName("zhang");
         user1.setGender("male");

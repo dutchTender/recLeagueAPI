@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import li.zhang.app.model.core.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;

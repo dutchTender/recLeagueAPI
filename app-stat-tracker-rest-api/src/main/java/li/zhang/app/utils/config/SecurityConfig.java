@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -33,18 +35,20 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
+
+    @Profile("DEV")
     @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
-                User.withUsername("lizhang")
-                        .password("{noop}password")
+                User.withUsername("dutchTender")
+                        .password(passwordEncoder().encode("123456"))
                         .authorities("read")
                         .build()
         );
     }
 
     @Bean
-    @Profile("PROD")
+    @Profile("DEV")
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtDecoder jwtDecoder) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -57,14 +61,14 @@ public class SecurityConfig {
     }
 
     @Bean
-    @Profile("DEV")
+    @Profile("TEST")
     public WebSecurityCustomizer webSecurityCustomizer() {
         // Keeps Spring Filters completely away from the H2 console endpoints
         return web -> web.ignoring().requestMatchers("/h2-console/**");
     }
 
     @Bean
-    @Profile("DEV")
+    @Profile("TEST")
     public SecurityFilterChain securityFilterChainDev(HttpSecurity http) throws Exception {
         http
                 // Disable CSRF for non-browser clients (Postman/REST API tools)
@@ -112,6 +116,12 @@ public class SecurityConfig {
         } catch (Exception ex) {
             throw new IllegalStateException(ex);
         }
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // Automatically handles secure salting and hashing
+        return new BCryptPasswordEncoder();
     }
 
 }

@@ -25,8 +25,9 @@ public class UserInfo implements BaseEntity {
     public UserInfo() {
     }
     @Column(unique = true)
-    String userName;
-    String password;
+    private String userName;
+    private String password;
+    private String role;
     @Column(unique = true)
     String email;
     String firstName;
