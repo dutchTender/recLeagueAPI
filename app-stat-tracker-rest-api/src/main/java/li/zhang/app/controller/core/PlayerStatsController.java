@@ -1,6 +1,7 @@
 package li.zhang.app.controller.core;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import li.zhang.app.model.base.AbstractAPIResponse;
 import li.zhang.app.model.base.AbstractController;
 import li.zhang.app.model.base.AbstractRestMetaData;
@@ -21,9 +22,9 @@ import li.zhang.app.utils.constants.RestParams;
 import li.zhang.app.utils.constants.RestResponseMessage;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -97,6 +98,30 @@ public class PlayerStatsController extends AbstractController<PlayerStats, Playe
 
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: find one PLAYER STATS - count : 1 ");
         return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.PLAYER_STATS_GET_SUCCESS,RestParams.API_STATUS_OK);
+    }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> createPlayerStats(@RequestBody @Valid final PlayerStatsDTO dto) {
+        PlayerStats result = service.create(mapper.toEntity(dto));
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: create PLAYER STATS- count : 1  ");
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.PLAYER_STATS_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+    }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> updatePlayerStats(@PathVariable("id") final Long id, @RequestBody @Valid PlayerStatsDTO dto) {
+        PlayerStats playerResult = service.update(mapper.toEntity(dto));
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: update PLAYER - count : 1  ");
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(playerResult) , metaData, RestResponseMessage.PLAYER_STATS_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> delete(@PathVariable("id") final Long id) {
+        this.service.deleteById(id);
+        AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: delete PLAYER - count : 1  ");
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.PLAYER_STATS_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
     }
 
 }
