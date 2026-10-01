@@ -14,11 +14,9 @@ public class AuthController {
     private final TokenService tokenService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     public AuthController(TokenService tokenService) {
         this.tokenService = tokenService;
     }
-
 
     @PostMapping("/auth")
     public ResponseEntity<String> token(Authentication authentication) {

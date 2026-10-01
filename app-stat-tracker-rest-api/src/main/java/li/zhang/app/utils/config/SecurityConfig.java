@@ -35,7 +35,9 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Profile("DEV")
+
+
+    @Profile("TEST")
     @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager(
@@ -60,7 +62,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    @Profile("TEST")
+    @Profile("DEV")
     public WebSecurityCustomizer webSecurityCustomizer() {
         // Keeps Spring Filters completely away from the H2 console endpoints
         return web -> web.ignoring().requestMatchers("/h2-console/**");
@@ -116,6 +118,7 @@ public class SecurityConfig {
             throw new IllegalStateException(ex);
         }
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

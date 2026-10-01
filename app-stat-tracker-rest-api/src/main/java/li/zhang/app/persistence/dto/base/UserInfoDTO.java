@@ -14,13 +14,18 @@ public class UserInfoDTO {
     String userName;
     String passWord;
     String role;
+    String email;
     String firstName;
     String lastName;
+
+    String billingAddress;
+    String phone;
+    String address;
+    Integer age;
     String gender;
     Integer height;
     Integer weight;
-    Integer age;
-    String email;
+
 
     public UserInfoDTO(Long id, String userName, String firstName, String lastName, String gender, Integer height, Integer weight, Integer age, String email) {
         this.id = id;
@@ -33,5 +38,7 @@ public class UserInfoDTO {
         this.age = age;
         this.email = email;
     }
+
+
 }
 

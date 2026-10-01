@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserInfoDAO extends JpaRepository<UserInfo, Long>, QueryByExampleExecutor<UserInfo> {
-    Optional<UserInfoDTO> findByUserName(String username);
-    Optional<UserInfoDTO> findByEmail(String email);
-    Optional<UserInfoDTO> findUserInfoBy(Long id);
-    List<UserInfoDTO> findAllBy();
+    Optional<UserInfo> findByUserName(String username);
+    Optional<UserInfo> findByEmail(String email);
+    Optional<UserInfo> findUserInfoBy(Long id);
+    List<UserInfo> findAllBy();
     Page<UserInfoDTO> findAllBy(Pageable pageable);
     Optional<UserInfo> findUserInfoBy(Example<UserInfo> example);
 

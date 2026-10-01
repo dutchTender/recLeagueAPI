@@ -4,6 +4,7 @@ import li.zhang.app.model.core.BaseService;
 import li.zhang.app.persistence.dao.base.UserInfoDAO;
 import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.persistence.entity.base.UserInfo;
+import li.zhang.app.persistence.mapper.UserInfoMapper;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,10 +15,12 @@ import java.util.logging.Logger;
 public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
 
     private static final Logger logger = Logger.getLogger(UserInfoService.class.getName());
+    private final UserInfoMapper mapper;
     private final UserInfoDAO userInfoDAO;
 
-    public UserInfoService(UserInfoDAO userInfoDAO)
+    public UserInfoService(UserInfoMapper mapper, UserInfoDAO userInfoDAO)
     {
+        this.mapper = mapper;
         this.userInfoDAO = userInfoDAO;
     }
     @Override
@@ -27,11 +30,11 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
 
     @Override
     public UserInfoDTO find(Long id) {
-        return this.userInfoDAO.findUserInfoBy(id).orElse(null);
+        return mapper.toDTO(this.userInfoDAO.findUserInfoBy(id).orElse(null));
     }
 
     public UserInfoDTO findByUserName(String username) {
-        return this.userInfoDAO.findByUserName(username).orElse(null);
+        return mapper.toDTO(this.userInfoDAO.findByUserName(username).orElse(null));
     }
     @Override
     public UserInfo findByExample(Example<UserInfo> example) {
@@ -40,7 +43,7 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
 
     @Override
     public List<UserInfoDTO> findAll() {
-        return this.userInfoDAO.findAllBy();
+        return mapper.toDTOList(this.userInfoDAO.findAllBy());
     }
 
     @Override
@@ -48,7 +51,7 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
         return this.userInfoDAO.findAllBy(example);
     }
 
-    @Override
+
     public Page<UserInfoDTO> findAllPaginatedAndSorted(int page, int size, String sortBy, String sortOrder) {
         Sort.Direction direction = Sort.Direction.fromString(sortOrder);
         Sort sort = Sort.by(direction, sortBy);
