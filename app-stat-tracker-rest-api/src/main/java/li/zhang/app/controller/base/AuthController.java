@@ -1,5 +1,11 @@
 package li.zhang.app.controller.base;
 
+import com.nimbusds.jose.KeySourceException;
+import com.nimbusds.jose.jwk.JWKMatcher;
+import com.nimbusds.jose.jwk.JWKSelector;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
 import li.zhang.app.model.base.AbstractAPIResponse;
 import li.zhang.app.model.base.AbstractRestMetaData;
 import li.zhang.app.model.base.AbstractRestResponse;
@@ -11,20 +17,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = RestParams.API_CLIENT_URL)
 public class AuthController {
 
     private final TokenService tokenService;
+    private final JWKSource<SecurityContext> jwkSource;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final AbstractAPIResponse<String> apiResponseSingleton = new AbstractAPIResponse<>();
 
 
-    public AuthController(TokenService tokenService) {
+    public AuthController(TokenService tokenService, JWKSource<SecurityContext> jwkSource) {
         this.tokenService = tokenService;
+        this.jwkSource = jwkSource;
     }
 
     @PostMapping("/auth")
@@ -37,7 +48,13 @@ public class AuthController {
 
     }
 
-
+    @GetMapping("/.well-known/jwks.json")
+    public Map<String, Object> keys() throws KeySourceException {
+        // This converts your key set cleanly into standard JWK JSON format
+        JWKSelector selector = new JWKSelector(new JWKMatcher.Builder().build());
+        var keys = this.jwkSource.get(selector, null);
+        return new JWKSet(keys).toJSONObject();
+    }
 
 }
 
