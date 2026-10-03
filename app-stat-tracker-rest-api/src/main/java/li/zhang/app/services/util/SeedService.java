@@ -37,7 +37,7 @@ public class SeedService {
 /*
 start of team 1
  */
-        UserInfo user1 = new UserInfo("dutchTender");
+        UserInfo user1 = new UserInfo("dutchTender@gmail.com");
         user1.setEmail("lzhang421@gmailo.com");
         user1.setPassword(passwordEncoder.encode("123456"));
         user1.setRole("read");
