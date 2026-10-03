@@ -76,7 +76,7 @@ public class UserInfoController extends AbstractController<UserInfo, UserInfoDTO
     public ResponseEntity<AbstractRestResponse<UserInfoDTO>> createUser(@RequestBody @Valid final UserInfoDTO dto) {
         UserInfo result = service.create(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: create USER - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_CREATE_SUCCESS, HttpStatus.CREATED.value());
     }
 
     @PutMapping(value = "/{id}")
@@ -84,7 +84,7 @@ public class UserInfoController extends AbstractController<UserInfo, UserInfoDTO
     public ResponseEntity<AbstractRestResponse<UserInfoDTO>> updateUser(@PathVariable("id") final Long id, @RequestBody @Valid UserInfoDTO dto) {
          UserInfo result = service.update(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: update USER - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.USER_UPDATE_SUCCESS, HttpStatus.OK.value());
     }
 
     @DeleteMapping(value = "/{id}")
@@ -92,7 +92,7 @@ public class UserInfoController extends AbstractController<UserInfo, UserInfoDTO
     public ResponseEntity<AbstractRestResponse<UserInfoDTO>> delete(@PathVariable("id") final Long id) {
         this.service.deleteById(id);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.USER_ENTITY_PATH, "params: delete PLAYER - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.USER_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.USER_DELETE_SUCCESS, HttpStatus.NO_CONTENT.value());
     }
 
 

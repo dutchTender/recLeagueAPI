@@ -77,7 +77,7 @@ public class GameController extends AbstractController<Game, GameDTO> {
     public ResponseEntity<AbstractRestResponse<GameDTO>> createGame(@RequestBody @Valid final GameDTO dto) {
         Game gameResult = service.create(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.GAME_ENTITY_PATH, "params: create GAME - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(gameResult) , metaData, RestResponseMessage.GAME_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(gameResult) , metaData, RestResponseMessage.GAME_CREATE_SUCCESS, HttpStatus.CREATED.value());
     }
 
     @PutMapping(value = "/{id}")
@@ -85,7 +85,7 @@ public class GameController extends AbstractController<Game, GameDTO> {
     public ResponseEntity<AbstractRestResponse<GameDTO>> updateGame(@PathVariable("id") final Long id, @RequestBody @Valid GameDTO dto) {
         Game gameResult = service.update(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.GAME_ENTITY_PATH, "params: update GAME - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(gameResult) , metaData, RestResponseMessage.GAME_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(gameResult) , metaData, RestResponseMessage.GAME_UPDATE_SUCCESS, HttpStatus.OK.value());
     }
 
     @DeleteMapping(value = "/{id}")
@@ -93,7 +93,7 @@ public class GameController extends AbstractController<Game, GameDTO> {
     public ResponseEntity<AbstractRestResponse<GameDTO>> delete(@PathVariable("id") final Long id) {
         this.service.deleteById(id);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.GAME_ENTITY_PATH, "params: delete GAME - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.GAME_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.GAME_DELETE_SUCCESS, HttpStatus.NO_CONTENT.value());
     }
 
 

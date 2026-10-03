@@ -3,7 +3,7 @@ package li.zhang.app.model.base;
 import org.springframework.http.ResponseEntity;
 
 public class AbstractAPIResponse<T> {
-    public ResponseEntity<AbstractRestResponse<T>> createAPIResponse(T dto, AbstractRestMetaData restMetaData, String message, String code) {
+    public ResponseEntity<AbstractRestResponse<T>> createAPIResponse(T dto, AbstractRestMetaData restMetaData, String message, Number code) {
         AbstractRestResponse<T> restResponse = new AbstractRestResponse<>(
                 code,
                 message,

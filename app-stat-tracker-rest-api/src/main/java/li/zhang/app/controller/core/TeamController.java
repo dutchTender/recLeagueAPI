@@ -77,7 +77,7 @@ public class TeamController extends AbstractController<Team, TeamDTO> {
     public ResponseEntity<AbstractRestResponse<TeamDTO>> createTeam(@RequestBody @Valid final TeamDTO dto) {
         Team teamResult = service.create(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.TEAM_ENTITY_PATH, "params: create TEAM - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(teamResult) , metaData, RestResponseMessage.TEAM_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(teamResult) , metaData, RestResponseMessage.TEAM_CREATE_SUCCESS, HttpStatus.CREATED.value());
     }
 
     @PutMapping(value = "/{id}")
@@ -85,7 +85,7 @@ public class TeamController extends AbstractController<Team, TeamDTO> {
     public ResponseEntity<AbstractRestResponse<TeamDTO>> updateTeam(@PathVariable("id") final Long id, @RequestBody @Valid TeamDTO dto) {
         Team teamResult = service.update(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.TEAM_ENTITY_PATH, "params: update TEAM - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(teamResult) , metaData, RestResponseMessage.TEAM_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(teamResult) , metaData, RestResponseMessage.TEAM_UPDATE_SUCCESS, HttpStatus.OK.value());
     }
 
     @DeleteMapping(value = "/{id}")
@@ -93,7 +93,7 @@ public class TeamController extends AbstractController<Team, TeamDTO> {
     public ResponseEntity<AbstractRestResponse<TeamDTO>> delete(@PathVariable("id") final Long id) {
         this.service.deleteById(id);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.TEAM_ENTITY_PATH, "params: delete TEAM - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.TEAM_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.TEAM_DELETE_SUCCESS, HttpStatus.NO_CONTENT.value());
     }
 
 }

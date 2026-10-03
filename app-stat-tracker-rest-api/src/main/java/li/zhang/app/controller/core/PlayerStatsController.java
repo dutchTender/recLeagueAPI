@@ -105,7 +105,7 @@ public class PlayerStatsController extends AbstractController<PlayerStats, Playe
     public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> createPlayerStats(@RequestBody @Valid final PlayerStatsDTO dto) {
         PlayerStats result = service.create(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: create PLAYER STATS- count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.PLAYER_STATS_CREATE_SUCCESS,String.valueOf(HttpStatus.CREATED));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(result) , metaData, RestResponseMessage.PLAYER_STATS_CREATE_SUCCESS, HttpStatus.CREATED.value());
     }
 
     @PutMapping(value = "/{id}")
@@ -113,7 +113,7 @@ public class PlayerStatsController extends AbstractController<PlayerStats, Playe
     public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> updatePlayerStats(@PathVariable("id") final Long id, @RequestBody @Valid PlayerStatsDTO dto) {
         PlayerStats playerResult = service.update(mapper.toEntity(dto));
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: update PLAYER - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(mapper.toDTO(playerResult) , metaData, RestResponseMessage.PLAYER_STATS_UPDATE_SUCCESS, String.valueOf(HttpStatus.OK));
+        return apiResponseSingleton.createAPIResponse(mapper.toDTO(playerResult) , metaData, RestResponseMessage.PLAYER_STATS_UPDATE_SUCCESS, HttpStatus.OK.value());
     }
 
     @DeleteMapping(value = "/{id}")
@@ -121,7 +121,7 @@ public class PlayerStatsController extends AbstractController<PlayerStats, Playe
     public ResponseEntity<AbstractRestResponse<PlayerStatsDTO>> delete(@PathVariable("id") final Long id) {
         this.service.deleteById(id);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.PLAYER_STATS_ENTITY_PATH, "params: delete PLAYER - count : 1  ");
-        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.PLAYER_STATS_DELETE_SUCCESS, String.valueOf(HttpStatus.NO_CONTENT));
+        return apiResponseSingleton.createAPIResponse(null , metaData, RestResponseMessage.PLAYER_STATS_DELETE_SUCCESS, HttpStatus.NO_CONTENT.value());
     }
 
 }

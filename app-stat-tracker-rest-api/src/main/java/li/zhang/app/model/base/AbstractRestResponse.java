@@ -6,12 +6,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class AbstractRestResponse<T> {
-    private String status;
+    private Number status;
     private String message;
     private T data;
     private AbstractRestMetaData metaData;
 
-    protected AbstractRestResponse(String code, String message, T data, AbstractRestMetaData metaData) {
+    protected AbstractRestResponse(Number code, String message, T data, AbstractRestMetaData metaData) {
         this.status = code;
         this.message = message;
         this.data = data;
