@@ -3,7 +3,6 @@ package li.zhang.app.controller.base;
 import li.zhang.app.model.base.AbstractAPIResponse;
 import li.zhang.app.model.base.AbstractRestMetaData;
 import li.zhang.app.model.base.AbstractRestResponse;
-import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.services.base.TokenService;
 import li.zhang.app.utils.constants.RestParams;
 import li.zhang.app.utils.constants.RestResponseMessage;
