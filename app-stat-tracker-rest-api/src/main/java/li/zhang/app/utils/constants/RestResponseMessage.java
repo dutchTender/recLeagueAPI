@@ -1,7 +1,7 @@
 package li.zhang.app.utils.constants;
 
 
-public class RestResponseMessage{
+public class RestResponseMessage {
     private RestResponseMessage() {
         /* This utility class should not be instantiated */
     }
@@ -26,7 +26,6 @@ public class RestResponseMessage{
     public static final String PLAYERS_STATS_GET_SUCCESS = "PLAYERS STATS retrieved successfully";
 
 
-
     public static final String TEAM_CREATE_SUCCESS = "New TEAM created successfully";
     public static final String TEAM_UPDATE_SUCCESS = "TEAM update successfully";
     public static final String TEAM_DELETE_SUCCESS = "TEAM deleted successfully";
@@ -38,5 +37,8 @@ public class RestResponseMessage{
     public static final String GAME_DELETE_SUCCESS = "GAME deleted successfully";
     public static final String GAME_GET_SUCCESS = "GAME retrieved successfully";
     public static final String GAMES_GET_SUCCESS = "GAMES retrieved successfully";
-}
 
+    public static final String TOKEN_CREATE_SUCCESS = "New User created successfully";
+
+
+}

@@ -13,4 +13,6 @@ public class RestParams {
     public static final String TEAM_ENTITY_PATH = "/teams";
     public static final String GAME_ENTITY_PATH = "/games";
     public static final String USER_ENTITY_PATH = "/users";
+
+    public static final String AUTH_PATH = "/auth";
 }
