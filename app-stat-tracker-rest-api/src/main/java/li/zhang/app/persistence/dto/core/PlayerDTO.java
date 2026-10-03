@@ -22,6 +22,7 @@ public class PlayerDTO {
     Set<PlayerStatsDTO> seasonStats = new HashSet<>();
 
 
+
     public void addPlayerSeasonStats(PlayerStatsDTO playerStats) {
         this.seasonStats.add(playerStats);
     }
@@ -38,7 +39,6 @@ public class PlayerDTO {
         this.team = team;
         this.gameStats = gameStats;
     }
-
     public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, TeamDTO team, Set<PlayerStatsDTO> seasonStats) {
         this.id = id;
         this.position = position;
@@ -47,7 +47,6 @@ public class PlayerDTO {
         this.team = team;
         this.seasonStats = seasonStats;
     }
-
     public PlayerDTO(Long id, String position, Integer number, UserInfoDTO user, PlayerStatsDTO gameStats) {
         this.id = id;
         this.position = position;
@@ -55,15 +54,16 @@ public class PlayerDTO {
         this.user = user;
         this.gameStats = gameStats;
     }
-
     public PlayerDTO(UserInfoDTO user, TeamDTO team, PlayerStatsDTO gameStats) {
         this.user = user;
         this.team = team;
         this.gameStats = gameStats;
     }
-
     public PlayerDTO(UserInfoDTO user, TeamDTO team) {
         this.user = user;
         this.team = team;
+    }
+    public PlayerDTO(UserInfoDTO user) {
+        this.user = user;
     }
 }

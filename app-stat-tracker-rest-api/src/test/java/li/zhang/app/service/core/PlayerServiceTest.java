@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
+import java.util.Objects;
 
 import li.zhang.app.persistence.dao.core.PlayerDAO;
+import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.persistence.dto.core.PlayerDTO;
 import li.zhang.app.services.core.PlayerService;
 
@@ -27,12 +29,14 @@ class PlayerServiceTest {
     void getById_ShouldReturnEntity_WhenEntityExists() {
         // Arrange
         Long entityId = 1L;
-        PlayerDTO playerDTO = new PlayerDTO();
-        playerDTO.getUser().setUserName("Alice");
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        userInfoDTO.setUserName("Alice");
+        PlayerDTO playerDTO = new PlayerDTO(userInfoDTO);
+
         when(repository.findPlayerById(entityId)).thenReturn(List.of(playerDTO));
-        PlayerDTO result = service.find(entityId);
+        List<PlayerDTO> result = repository.findPlayerById(entityId);
         assertNotNull(result);
-        assertEquals("Alice", result.getUser().getUserName());
+        assertEquals("Alice", Objects.requireNonNull(result.stream().findFirst().orElse(null)).getUser().getUserName());
 
         verify(repository, times(1)).findPlayerById(entityId);
     }

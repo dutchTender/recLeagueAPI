@@ -5,6 +5,7 @@ package li.zhang.app.dao;
 
 import li.zhang.app.persistence.dao.core.TeamDAO;
 
+import li.zhang.app.persistence.dto.core.TeamDTO;
 import li.zhang.app.persistence.entity.core.Team;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ class TeamDAOTest {
 
         Team entity = new Team("rockets");
         Team savedEntity = repository.save(entity);
-        Optional<Team> foundProduct = repository.findById(savedEntity.getId());
-        assertThat(foundProduct).isPresent();
-        assertThat(foundProduct.get().getTeamName()).isEqualTo("rockets");
+        List<TeamDTO> foundProduct = repository.findTeamById(savedEntity.getId());
+        assertThat(foundProduct.stream().anyMatch(teamDTO -> teamDTO.getTeamName().equals(savedEntity.teamName))).isTrue();
+
 
     }
 
@@ -40,8 +41,6 @@ class TeamDAOTest {
         repository.save(new Team("bulls"));
         repository.save(new Team("sharks"));
         repository.save(new Team("warriors"));
-
-
         List<Team> teamList = repository.findAll();
         assertThat(teamList).hasSize(3);
 
