@@ -5,7 +5,6 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -51,10 +50,9 @@ public class SecurityConfig {
     @Profile("TEST")
     public SecurityFilterChain securityFilterChainDev(HttpSecurity http) throws Exception {
         http
-                // Disable CSRF for non-browser clients (Postman/REST API tools)
+                .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // Allows all requests to pass through without authentication
                         .anyRequest().permitAll()
                 );
 
@@ -65,17 +63,17 @@ public class SecurityConfig {
     @Profile("DEV")
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtDecoder jwtDecoder) throws Exception {
         return http
-                .cors(withDefaults()) // Uses the default "corsFilter" bean or standard MVC configuration
+                .cors(withDefaults()) /* Uses the default "corsFilter" bean or standard MVC configuration*/
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/auth").authenticated()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  /* allows no auth preflight  */
+                        .requestMatchers("/auth").authenticated()   /* opens up /auth for basic auth */
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults())
-                .oauth2ResourceServer(oauth2 -> oauth2
+                .oauth2ResourceServer(oauth2 -> oauth2 /* everything else protected by oauth2 jwt */
                         .jwt(jwt -> jwt.decoder(jwtDecoder))
-                )
+                ) /* state less session for jwt auth */
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
 
     }
@@ -83,7 +81,7 @@ public class SecurityConfig {
     @Bean
     @Profile("DEV")
     public WebSecurityCustomizer webSecurityCustomizer() {
-        // Keeps Spring Filters completely away from the H2 console endpoints
+        /* opens up the H2 console endpoints */
         return web -> web.ignoring().requestMatchers("/h2-console/**");
     }
 
@@ -126,7 +124,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Automatically handles secure salting and hashing
         return new BCryptPasswordEncoder();
     }
 
