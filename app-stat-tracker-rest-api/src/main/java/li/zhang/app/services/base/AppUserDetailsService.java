@@ -2,6 +2,7 @@ package li.zhang.app.services.base;
 
 import li.zhang.app.persistence.dao.base.UserInfoDAO;
 import li.zhang.app.persistence.entity.base.UserInfo;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,10 +25,12 @@ public class AppUserDetailsService implements UserDetailsService {
 
     @Override
     @NullMarked
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public @NonNull UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             UserInfo appUser = userInfoDAO.findByUserName(username).orElse(null);
-            assert appUser != null;
+            if(appUser == null) {
+                appUser = new UserInfo();
+            }
             return org.springframework.security.core.userdetails.User.builder()
                     .username(appUser.getUserName())
                     .password(appUser.getPassword())

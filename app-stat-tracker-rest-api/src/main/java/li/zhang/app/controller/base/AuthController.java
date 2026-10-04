@@ -41,7 +41,6 @@ public class AuthController {
 
     @PostMapping(RestParams.AUTH_PATH)
     public ResponseEntity<AbstractRestResponse<String>> token(Authentication authentication) {
-        // this will be updated to a authorization token exchange
         String token = this.tokenService.generateAccessToken(authentication);
         logger.info("Generated token: {}", token);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.AUTH_PATH, "token generated for user");
@@ -51,7 +50,6 @@ public class AuthController {
 
     @GetMapping(RestParams.JWKs_PATH)
     public ResponseEntity<AbstractRestResponse<Map<String, Object>>>keys() throws KeySourceException {
-        // This converts your key set cleanly into standard JWK JSON format
         JWKSelector selector = new JWKSelector(new JWKMatcher.Builder().build());
         var keys = this.jwkSource.get(selector, null);
         AbstractRestMetaData metaData = new AbstractRestMetaData(RestParams.API_BASE_URL+RestParams.JWKs_PATH, "rsa pub key for user");
