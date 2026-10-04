@@ -39,6 +39,7 @@ public class RestResponseMessage {
     public static final String GAMES_GET_SUCCESS = "GAMES retrieved successfully";
 
     public static final String TOKEN_CREATE_SUCCESS = "New ACCESS TOKEN created successfully";
+    public static final String JWKs_RETURNED_SUCCESS = "JWKs returned successfully";
 
 
 }

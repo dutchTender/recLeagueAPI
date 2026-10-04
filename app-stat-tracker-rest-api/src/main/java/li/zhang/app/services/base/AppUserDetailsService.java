@@ -21,8 +21,9 @@ public class AppUserDetailsService implements UserDetailsService {
     public AppUserDetailsService(UserInfoDAO userInfoDAO) {
         this.userInfoDAO = userInfoDAO;
     }
-    @NullMarked
+
     @Override
+    @NullMarked
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             UserInfo appUser = userInfoDAO.findByUserName(username).orElse(null);
@@ -32,7 +33,6 @@ public class AppUserDetailsService implements UserDetailsService {
                     .password(appUser.getPassword())
                     .authorities(appUser.getRole()) // e.g., "ROLE_USER"
                     .build();
-
         } catch (Exception exception) {
                 logger.info(exception.getMessage());
             throw new UsernameNotFoundException("User not found", exception);
