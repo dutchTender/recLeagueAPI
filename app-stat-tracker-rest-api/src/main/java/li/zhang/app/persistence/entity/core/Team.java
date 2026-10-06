@@ -37,6 +37,11 @@ public class Team implements BaseEntity {
     private Set<Game> awayGames = new HashSet<>();
     @OneToMany(mappedBy = "team")
     private Set<Player> players = new HashSet<>();
+
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "league_id")
+    private League league;
+
     public void addPlayer(Player player){
         this.players.add(player);
         player.setTeam(this);

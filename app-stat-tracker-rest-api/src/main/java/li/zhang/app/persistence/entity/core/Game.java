@@ -32,6 +32,8 @@ public class Game implements BaseEntity {
     public Team awayTeam;
     @OneToMany(mappedBy = "game")
     private Set<PlayerStats> gameStats;
+    private boolean completed = false;
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
