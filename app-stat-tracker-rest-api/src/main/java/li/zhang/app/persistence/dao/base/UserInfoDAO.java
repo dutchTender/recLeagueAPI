@@ -16,7 +16,7 @@ public interface UserInfoDAO extends JpaRepository<UserInfo, Long>, QueryByExamp
     Optional<UserInfo> findByEmail(String email);
     Optional<UserInfo> findUserInfoBy(Long id);
     List<UserInfo> findAllBy();
-    Page<UserInfoDTO> findAllBy(Pageable pageable);
+    Page<UserInfo> findAllBy(Pageable pageable);
     Optional<UserInfo> findUserInfoBy(Example<UserInfo> example);
 
     List<UserInfo> findAllBy(Example<UserInfo> example);

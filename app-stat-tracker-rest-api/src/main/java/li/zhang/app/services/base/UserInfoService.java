@@ -57,7 +57,24 @@ public class UserInfoService implements BaseService<UserInfo, UserInfoDTO> {
         Sort sort = Sort.by(direction, sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
         this.getLogger().log(Level.INFO, "findAllPaginatedAndSorted() params : - {}", pageable);
-        return this.userInfoDAO.findAllBy(pageable);
+        Page<UserInfo> userPage =  this.userInfoDAO.findAllBy(pageable);
+
+        return userPage.map(userInfo -> {
+            UserInfoDTO dto = new UserInfoDTO();
+            dto.setId(userInfo.getId());
+            dto.setUserName(userInfo.getUserName());
+            dto.setFirstName(userInfo.getFirstName());
+            dto.setLastName(userInfo.getLastName());
+            dto.setEmail(userInfo.getEmail());
+            dto.setPhone(userInfo.getPhone());
+            dto.setAddress(userInfo.getAddress());
+            dto.setGender(userInfo.getGender());
+            dto.setHeight(userInfo.getHeight());
+            dto.setWeight(userInfo.getWeight());
+            dto.setActive(userInfo.isActiveUser());
+
+            return dto;
+        });
     }
 
     @Override

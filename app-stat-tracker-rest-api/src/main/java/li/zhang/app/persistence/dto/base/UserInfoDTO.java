@@ -24,6 +24,7 @@ public class UserInfoDTO {
     String gender;
     Integer height;
     Integer weight;
+    boolean isActive;
 
 
     public UserInfoDTO(Long id, String userName, String firstName, String lastName, String gender, Integer height, Integer weight, Integer age, String email) {

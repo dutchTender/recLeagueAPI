@@ -39,6 +39,8 @@ public class UserInfo implements BaseEntity {
     String gender;
     Integer height;
     Integer weight;
+    boolean activeUser = false;
+
     @OneToMany(mappedBy = "user")
     private Set<Player> players = new HashSet<>();
     @Override
