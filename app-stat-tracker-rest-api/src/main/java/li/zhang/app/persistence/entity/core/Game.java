@@ -20,8 +20,7 @@ public class Game implements BaseEntity {
     public Game(String gameTime) {
         this.gameTime = gameTime;
     }
-    public Game() {
-    }
+    public Game() {}
     public String gameType;
     public String gameDate;
     public String gameTime;

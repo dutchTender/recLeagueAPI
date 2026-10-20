@@ -15,7 +15,9 @@ public class AccountConfirmProcessingService {
     // add constructor
 
 
-    @JmsListener(destination = "${app.queue.account.confirm}")
+    @JmsListener(
+        destination = "${app.queue.account.confirm}",
+        containerFactory = "durableJmsContainerFactory" )
     public void receiveMailTask(AccountActivationEvent event) {
         log.info("Received background mail task for: {}", event.getConfirmationAddress());
         log.info("Subject: {}", event.getActivationCode());
