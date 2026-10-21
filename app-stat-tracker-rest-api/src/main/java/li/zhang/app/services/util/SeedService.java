@@ -5,7 +5,6 @@ import li.zhang.app.persistence.dao.core.GameDAO;
 import li.zhang.app.persistence.dao.core.PlayerDAO;
 import li.zhang.app.persistence.dao.core.PlayerStatsDAO;
 import li.zhang.app.persistence.dao.core.TeamDAO;
-import li.zhang.app.persistence.dto.base.UserInfoDTO;
 import li.zhang.app.persistence.entity.base.UserInfo;
 import li.zhang.app.persistence.entity.core.Game;
 import li.zhang.app.persistence.entity.core.Player;
