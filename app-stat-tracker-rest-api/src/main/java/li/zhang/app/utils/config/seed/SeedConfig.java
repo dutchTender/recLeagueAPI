@@ -1,4 +1,4 @@
-package li.zhang.app.utils.config;
+package li.zhang.app.utils.config.seed;
 
 import li.zhang.app.services.util.SeedService;
 import org.springframework.boot.CommandLineRunner;

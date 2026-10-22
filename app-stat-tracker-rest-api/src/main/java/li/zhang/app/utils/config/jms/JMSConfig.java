@@ -1,8 +1,6 @@
-package li.zhang.app.utils.config;
+package li.zhang.app.utils.config.jms;
 
-import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
