@@ -11,6 +11,12 @@
 	<groupId>li.zhang</groupId>
 	<artifactId>app-stat-tracker-rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>../app-auth-server</module>
+		<module>../app-resource-core</module>
+		<module>../app-resource-jms</module>
+	</modules>
 	<name/>
 	<description/>
 	<url/>
