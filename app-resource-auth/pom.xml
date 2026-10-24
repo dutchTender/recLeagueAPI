@@ -6,7 +6,7 @@
     <artifactId>app-resource-auth</artifactId>
     <parent>
         <groupId>li.zhang</groupId>
-        <artifactId>app-resource-base</artifactId>
+        <artifactId>app-resource-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../app-stat-tracker-rest-api/pom.xml</relativePath> <!-- Path to sibling -->
     </parent>
