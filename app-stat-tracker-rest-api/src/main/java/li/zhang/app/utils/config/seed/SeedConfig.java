@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class SeedConfig {
 
-    @Profile("test")
+    @Profile("test-H2")
     @Bean
     CommandLineRunner initializeData(SeedService dataSeederService) {
         return args -> dataSeederService.seedDB();

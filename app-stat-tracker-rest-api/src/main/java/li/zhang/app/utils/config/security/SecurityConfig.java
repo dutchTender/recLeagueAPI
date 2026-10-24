@@ -96,12 +96,14 @@ public class SecurityConfig {
 
     @Bean
     public JWKSource<SecurityContext> jwkSource(RSAKey rsaKey) {
+
         JWKSet jwkSet = new JWKSet(rsaKey);
         return (jwkSelector, context) -> jwkSelector.select(jwkSet);
     }
 
     @Bean
     public RSAKey rsaKey() {
+        /*fetch rsa key from authorization server via app properties*/
         KeyPair keyPair = generateRsaKey();
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();

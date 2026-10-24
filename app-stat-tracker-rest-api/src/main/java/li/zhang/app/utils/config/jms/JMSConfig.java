@@ -32,7 +32,7 @@ public class JMSConfig {
         activeMQConnectionFactory.setBrokerURL("tcp://localhost:61616");
 
         CachingConnectionFactory cachingFactory = new CachingConnectionFactory(activeMQConnectionFactory);
-        cachingFactory.setClientId("my-application-client-id");
+        cachingFactory.setClientId("app-resource-server-api");
         return cachingFactory;
     }
 
