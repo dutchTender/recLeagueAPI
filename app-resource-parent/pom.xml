@@ -14,7 +14,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>../app-resource-auth</module>
-		<module>../app-resource-base</module>
+		<module>../app-resource-common</module>
 		<module>../app-resource-core</module>
 		<module>../app-resource-jms</module>
 	</modules>

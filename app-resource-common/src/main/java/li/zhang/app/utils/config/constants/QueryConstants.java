@@ -1,4 +1,4 @@
-package li.zhang.app.model.constants;
+package li.zhang.app.utils.config.constants;
 
 
 

@@ -1,4 +1,4 @@
-package li.zhang.app.utils.constants;
+package li.zhang.app.utils.config.constants;
 
 
 public class RestResponseMessage {

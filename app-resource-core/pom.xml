@@ -8,12 +8,20 @@
         <groupId>li.zhang</groupId>
         <artifactId>app-resource-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../app-stat-tracker-rest-api/pom.xml</relativePath> <!-- Path to sibling -->
+        <relativePath>../app-resource-parent/pom.xml</relativePath> <!-- Path to sibling -->
     </parent>
     <properties>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.version>0.0.1-SNAPSHOT</project.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>li.zhang</groupId>
+            <artifactId>app-resource-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
