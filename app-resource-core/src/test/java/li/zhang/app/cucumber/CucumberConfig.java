@@ -1,8 +1,8 @@
 package li.zhang.app.cucumber;
 
 import io.cucumber.spring.CucumberContextConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
 import li.zhang.app.AppStatTrackerRestApiApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 @CucumberContextConfiguration
