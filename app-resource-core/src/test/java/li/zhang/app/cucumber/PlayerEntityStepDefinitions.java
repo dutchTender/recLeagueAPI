@@ -4,11 +4,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import li.zhang.app.persistence.dao.core.PlayerDAO;
-import li.zhang.app.persistence.dto.core.PlayerDTO;
 import li.zhang.app.persistence.entity.core.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

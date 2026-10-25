@@ -1,4 +1,4 @@
-package li.zhang.app.service.core;
+package li.zhang.app.services.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

@@ -22,5 +22,7 @@
             <artifactId>app-resource-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--testing-->
     </dependencies>
 </project>
