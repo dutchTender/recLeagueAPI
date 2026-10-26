@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class AppStatTrackerRestApiApplication {
+public class AppResourceAuth {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AppStatTrackerRestApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AppResourceAuth.class, args);
+    }
 
 }
+

@@ -37,14 +37,6 @@
 		<java.version>17</java.version>
 		<cucumber.version>7.34.8</cucumber.version>
 	</properties>
-	<build>
-		<plugins>
 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>
